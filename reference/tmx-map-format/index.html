@@ -112,7 +112,6 @@
 
             <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
-                
                 <li >
                     <a rel="next" href="../../manual/using-commands/">
                         <i class="fa fa-arrow-left"></i> Previous
@@ -144,17 +143,17 @@
     
         <li class="main active"><a href="#tmx-map-format">TMX Map Format</a></li>
         
-            <li><a href="#map">map</a></li>
+            <li><a href="#map">&lt;map&gt;</a></li>
         
-            <li><a href="#tileset">tileset</a></li>
+            <li><a href="#tileset">&lt;tileset&gt;</a></li>
         
-            <li><a href="#layer">layer</a></li>
+            <li><a href="#layer">&lt;layer&gt;</a></li>
         
-            <li><a href="#objectgroup">objectgroup</a></li>
+            <li><a href="#objectgroup">&lt;objectgroup&gt;</a></li>
         
-            <li><a href="#imagelayer">imagelayer</a></li>
+            <li><a href="#imagelayer">&lt;imagelayer&gt;</a></li>
         
-            <li><a href="#properties">properties</a></li>
+            <li><a href="#properties">&lt;properties&gt;</a></li>
         
     
     </ul>
@@ -204,11 +203,10 @@
 <li><b>format:</b> Used for embedded images, in combination with a <code>data</code> child element. Valid values are file extensions like <code>png</code>, <code>gif</code>, <code>jpg</code>, <code>bmp</code>, etc. (since 0.9)</li>
 <li><i>id:</i> Used by some versions of Tiled Java. Deprecated and unsupported by Tiled Qt.</li>
 <li><b>source:</b> The reference to the tileset image file (Tiled supports most common image formats).</li>
-<li><b>trans:</b> Defines a specific color that is treated as transparent (example value: "#FF00FF" for magenta). Up until Tiled 0.10, this value is written out without a <code>#</code> but this is planned to change.</li>
+<li><b>trans:</b> Defines a specific color that is treated as transparent (example value: "#FF00FF" for magenta). Up until Tiled 0.12, this value is written out without a <code>#</code> but this is planned to change.</li>
 <li><b>width:</b> The image width in pixels (optional, used for tile index correction when the image changes)</li>
 <li><b>height:</b> The image height in pixels (optional)</li>
 </ul>
-<p>As of the current version of Tiled Qt, each tileset has a single image associated with it, which is cut into smaller tiles based on the attributes defined on the tileset element. Later versions may add support for adding multiple images to a single tileset, as is possible in Tiled Java.</p>
 <p>Can contain: <a href="#data">data</a> (since 0.9)</p>
 <h3 id="terraintypes">&lt;terraintypes&gt;</h3>
 <p>This element defines an array of terrain types, which can be referenced from the <code>terrain</code> attribute of the <code>tile</code> element.</p>
@@ -225,7 +223,16 @@
 <li><b>terrain:</b> Defines the terrain type of each corner of the tile, given as comma-separated indexes in the terrain types array in the order top-left, top-right, bottom-left, bottom-right. Leaving out a value means that corner has no terrain. (optional) (since 0.9)</li>
 <li><b>probability:</b> A percentage indicating the probability that this tile is chosen when it competes with others while editing with the terrain tool. (optional) (since 0.9)</li>
 </ul>
-<p>Can contain: <a href="#properties">properties</a>, <a href="#image">image</a> (since 0.9), <a href="#objectgroup">objectgroup</a> (since 0.10)</p>
+<p>Can contain: <a href="#properties">properties</a>, <a href="#image">image</a> (since 0.9), <a href="#objectgroup">objectgroup</a> (since 0.10), <a href="#animation">animation</a> (since 0.10)</p>
+<h4 id="animation">&lt;animation&gt;</h4>
+<p>Contains a list of animation frames.</p>
+<p>As of Tiled 0.10, each tile can have exactly one animation associated with it. In the future, there could be support for multiple named animations on a tile.</p>
+<p>Can contain: <a href="#frame">frame</a></p>
+<h5 id="frame">&lt;frame&gt;</h5>
+<ul>
+<li><b>tileid</b>: The local ID of a tile within the parent <a href="#tileset">tileset</a>.</li>
+<li><b>duration</b>: How long (in milliseconds) this frame should be displayed before advancing to the next frame.</li>
+</ul>
 <h2 id="layer">&lt;layer&gt;</h2>
 <p>All <code>&lt;tileset&gt;</code> tags shall occur before the first <code>&lt;layer&gt;</code> tag so that parsers may rely on having the tilesets before needing to resolve tiles.</p>
 <ul>
@@ -246,7 +253,7 @@
 <p>When no encoding or compression is given, the tiles are stored as individual XML <code>tile</code> elements. Next to that, the easiest format to parse is the "csv" (comma separated values) format.</p>
 <p>The base64-encoded and optionally compressed layer data is somewhat more complicated to parse. First you need to base64-decode it, then you may need to decompress it. Now you have an array of bytes, which should be interpreted as an array of unsigned 32-bit integers using little-endian byte ordering.</p>
 <p>Whatever format you choose for your layer data, you will always end up with so called "global tile IDs" (gids). They are global, since they may refer to a tile from any of the tilesets used by the map. In order to find out from which tileset the tile is you need to find the tileset with the highest <code>firstgid</code> that is still lower or equal than the gid. The tilesets are always stored with increasing <code>firstgid</code>s.</p>
-<p>Can contain: <a href="#tile">tile</a></p>
+<p>Can contain: <a href="#tile_1">tile</a></p>
 <h4 id="tile-flipping">Tile flipping</h4>
 <p>When you use the tile flipping feature added in Tiled Qt 0.7, the highest two bits of the gid store the flipped state. Bit 32 is used for storing whether the tile is horizontally flipped and bit 31 is used for the vertically flipped tiles. And since Tiled Qt 0.8, bit 30 means whether the tile is flipped (anti) diagonally, enabling tile rotation. These bits have to be read and cleared <i>before</i> you can find out which tileset a tile belongs to.</p>
 <p>When rendering a tile, the order of operation matters. The diagonal flip (x/y axis swap) is done first, followed by the horizontal and vertical flips.</p>
@@ -313,6 +320,7 @@ for (int y = 0; y &lt; map_height; ++y) {
 <li><i>height:</i> The height of the object group in tiles. Meaningless.</li>
 <li><b>opacity:</b> The opacity of the layer as a value from 0 to 1. Defaults to 1.</li>
 <li><b>visible:</b> Whether the layer is shown (1) or hidden (0). Defaults to 1.</li>
+<li><b>draworder:</b> Whether the objects are drawn according to the order of appearance ("index") or sorted by their y-coordinate ("top-down"). Defaults to "top-down".</li>
 </ul>
 <p>The object group is in fact a map layer, and is hence called "object layer" in Tiled Qt.</p>
 <p>Can contain: <a href="#properties">properties</a>, <a href="#object">object</a></p>
@@ -372,7 +380,11 @@ for (int y = 0; y &lt; map_height; ++y) {
 <p>The <strong>TMX Map Format</strong> by <a href="http://www.mapeditor.org">http://www.mapeditor.org</a> is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p></div>
         </div>
 
-        
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
 
         <script src="../../js/jquery-1.10.2.min.js"></script>
         <script src="../../js/bootstrap-3.0.3.min.js"></script>

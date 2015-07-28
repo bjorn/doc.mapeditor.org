@@ -112,7 +112,6 @@
 
             <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
-                
                 <li >
                     <a rel="next" href="../tmx-map-format/">
                         <i class="fa fa-arrow-left"></i> Previous
@@ -181,7 +180,28 @@
 <li>
 <p>The render order of the tiles on tile layers can be configured in a number of ways through a new <code>renderorder</code> property on the <code>map</code> element. Valid values are <code>right-down</code> (the default), <code>right-up</code>, <code>left-down</code> and <code>left-up</code>. In all cases, the map is drawn row-by-row. This is only supported for orthogonal maps at the moment.</p>
 </li>
+<li>
+<p>The render order of objects on object layers can be configured to be either sorted by their y-coordinate (previous behavior and still the default) or simply the order of appearance in the map file. The latter enables manual control over the drawing order with actions that "Raise" and "Lower" selected objects. It is controlled by the <code>draworder</code> property on the <code>objectgroup</code> element, which can be either <code>top-down</code> (default) or <code>index</code>.</p>
+</li>
+<li>
+<p>Tiles can have an <code>objectgroup</code> child element, which can contain objects that define the collision shape to use for that tile. This information can be edited in the new Tile Collision Editor.</p>
+</li>
+<li>
+<p>Tiles can have a single looping animation associated with them using an <code>animation</code> child element. Each frame of the animation refers to a local tile ID from this tileset and defines the frame duration in milliseconds. Example:</p>
+</li>
 </ul>
+<pre><code class="xml">&lt;tileset ...&gt;
+    ...
+    &lt;tile id=&quot;[n]&quot;&gt;
+        &lt;animation&gt;
+            &lt;frame tileid=&quot;0&quot; duration=&quot;100&quot;/&gt;
+            &lt;frame tileid=&quot;1&quot; duration=&quot;100&quot;/&gt;
+            &lt;frame tileid=&quot;2&quot; duration=&quot;100&quot;/&gt;
+        &lt;/animation&gt;
+    &lt;/tile&gt;
+&lt;/tileset&gt;
+</code></pre>
+
 <h2 id="tiled-09">Tiled 0.9</h2>
 <ul>
 <li>Per-object visibility flag is saved (defaults to 1):</li>
@@ -192,7 +212,7 @@
 <ul>
 <li>Terrain information was added to tileset definitions (this is generally not very relevant for games):</li>
 </ul>
-<pre><code class="xml">&lt;tileset&gt;
+<pre><code class="xml">&lt;tileset ...&gt;
     ...
     &lt;terraintypes&gt;
         &lt;terrain name=&quot;Name&quot; tile=&quot;local_id&quot;/&gt;
@@ -269,7 +289,11 @@
 </ul></div>
         </div>
 
-        
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
 
         <script src="../../js/jquery-1.10.2.min.js"></script>
         <script src="../../js/bootstrap-3.0.3.min.js"></script>
