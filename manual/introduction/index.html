@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>Using Commands - Tiled Documentation</title>
+	<title>Introduction - Tiled Documentation</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -75,16 +75,16 @@
                             <a href="../">Contents</a>
                         </li>
                     
-                        <li >
-                            <a href="../introduction/">Introduction</a>
+                        <li class="active">
+                            <a href="./">Introduction</a>
                         </li>
                     
                         <li >
                             <a href="../using-the-terrain-tool/">Using the Terrain Tool</a>
                         </li>
                     
-                        <li class="active">
-                            <a href="./">Using Commands</a>
+                        <li >
+                            <a href="../using-commands/">Using Commands</a>
                         </li>
                     
                     </ul>
@@ -117,12 +117,12 @@
             <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
                 <li >
-                    <a rel="next" href="../using-the-terrain-tool/">
+                    <a rel="next" href="../">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../../reference/tmx-map-format/">
+                    <a rel="prev" href="../using-the-terrain-tool/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -145,53 +145,26 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#using-commands">Using Commands</a></li>
+        <li class="main active"><a href="#introduction">Introduction</a></li>
         
-            <li><a href="#the-command-button">The Command Button</a></li>
+            <li><a href="#about-tiled">About Tiled</a></li>
         
-            <li><a href="#editing-commands">Editing Commands</a></li>
-        
-            <li><a href="#example-commands">Example Commands</a></li>
+            <li><a href="#getting-started">Getting Started</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="using-commands">Using Commands</h1>
-<p>The Command Button allows you to create and run shell commands (other programs) from Tiled.</p>
-<p>You may setup as many commands as you like. This is useful if you edit maps for multiple games and you want to set up a command for each game. Or you could setup multiple commands for the same game that load different checkpoints or configurations.</p>
-<h2 id="the-command-button">The Command Button</h2>
-<p>It is located on the main toolbar to the right of the redo button. Clicking on it will run the default command (the first command in the command list). Clicking the arrow next to it will bring down a menu that allows you to run any command you have set up, as well as an option to open the Edit Commands dialog.</p>
-<p>You can press F5 as a shortcut to clicking the button to run the default command.</p>
-<h2 id="editing-commands">Editing Commands</h2>
-<p>The 'Edit Commands' dialog contains a list of commands. Each command has several properties:</p>
-<ul>
-<li><strong>Name</strong>: The name of the command as it will be shown in the drop down list, so you can easily identify it.</li>
-<li><strong>Command</strong>: The actual shell command to execute. This probably starts with an executable program followed by arguments.<ul>
-<li>The token <code>%mapfile</code> is replaced with the current maps full path.</li>
-<li>The token <code>%objecttype</code> is replaced with the type of the currently selected object, if any. (since Tiled 0.12)</li>
-</ul>
-</li>
-<li><strong>Enabled</strong>: A quick way to disable commands and remove them from the drop down list.<ul>
-<li>The default command is the first enabled command.</li>
-</ul>
-</li>
-</ul>
-<p>You can also change whether or not it should save the current map before running commands.</p>
-<h2 id="example-commands">Example Commands</h2>
-<p>Launching a custom game called "mygame" with a -loadmap parameter and the mapfile:</p>
-<pre><code>mygame -loadmap %mapfile
-</code></pre>
-<p>On Mac, remember that Apps are folders, so you need to run the actual executable from within the <code>Contents/MacOS</code> folder:</p>
-<pre><code>/Applications/TextEdit.app/Contents/MacOS/TextEdit %mapfile
-</code></pre>
-<p>Some OS's also have a command to open files in the appropriate program:</p>
-<ul>
-<li>OSX: <code>open %mapfile</code></li>
-<li>GNOME systems like Ubuntu: <code>gnome-open %mapfile</code></li>
-<li>FreeDesktop.org standard: <code>xdg-open %mapfile</code></li>
-</ul></div>
+<h1 id="introduction">Introduction</h1>
+<h2 id="about-tiled">About Tiled</h2>
+<p><strong>Tiled is a 2D level editor that helps you develop the content of your game. Its primary feature is to edit tile maps of various forms, but it also supports free image placement as well as powerful ways to annotate your level with extra information used by the game. Tiled focuses on general flexiblity while trying to stay intuitive.</strong></p>
+<p>In terms of tile maps, it supports straight rectangular tile layers, but also projected isometric, staggered isometric and staggered hexagonal layers. A tileset can be either a single image containing many tiles, or it can be a collection of individual images. In order to support certain depth faking techniques, tiles and layers can be offset by a custom distance and their rendering order can be configured.</p>
+<p>The primary tool for editing tile layers is a stamp brush that allows efficient painting and copying of tile areas. It also supports drawing lines and circles. In addition, there are several selection tools and a tool that does <a href="../using-the-terrain-tool/">automatic terrain transitions</a>. Finally, it can apply changes based on <a href="https://github.com/bjorn/tiled/wiki/Automapping">pattern-matching</a> to automate parts of your work.</p>
+<p>Tiled also supports object layers, which traditionally were only for annotating your map with information but more recently they can also be used to place images. You can add rectangle, ellipse, polygon, polyline and tile objects. Object placement is not limited to the tile grid and objects can also be scaled or rotated. Object layers offer a lot of flexibility to add almost any information to your level that your game needs.</p>
+<p>Other things worth mentioning are the support for adding custom map or tileset formats through plugins, the tile stamp memory, tile animation support and the tile collision editor.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p><em>Most of the manual still needs to be written, including this section. Fortunately, there is a very nice <a href="http://www.gamefromscratch.com/post/2015/10/14/Tiled-Map-Editor-Tutorial-Series.aspx">Tiled Map Editor Tutorial Series</a> on GamesFromScratch.com. In addition, the support for Tiled in various <a href="../../reference/support-for-tmx-maps/">engines and frameworks</a> often comes with some usage information.</em></p></div>
         </div>
 
         <footer class="col-md-12">

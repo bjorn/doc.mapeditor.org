@@ -4,7 +4,7 @@
     
     <url>
      <loc>None/</loc>
-     <lastmod>2015-09-22</lastmod>
+     <lastmod>2015-10-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,19 +13,25 @@
         
     <url>
      <loc>None/manual/</loc>
-     <lastmod>2015-09-22</lastmod>
+     <lastmod>2015-10-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/manual/introduction/</loc>
+     <lastmod>2015-10-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/manual/using-the-terrain-tool/</loc>
-     <lastmod>2015-09-22</lastmod>
+     <lastmod>2015-10-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/manual/using-commands/</loc>
-     <lastmod>2015-09-22</lastmod>
+     <lastmod>2015-10-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -35,19 +41,19 @@
         
     <url>
      <loc>None/reference/tmx-map-format/</loc>
-     <lastmod>2015-09-22</lastmod>
+     <lastmod>2015-10-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/reference/tmx-changelog/</loc>
-     <lastmod>2015-09-22</lastmod>
+     <lastmod>2015-10-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/reference/support-for-tmx-maps/</loc>
-     <lastmod>2015-09-22</lastmod>
+     <lastmod>2015-10-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
