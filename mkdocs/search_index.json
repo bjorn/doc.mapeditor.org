@@ -3,7 +3,7 @@
         {
             "location": "/",
             "text": "Tiled Documentation\n\n\nWelcome to the documentation pages for \nTiled\n, a\nflexible tile map editor! Here you will find the\n\nTiled User Manual\n and the\n\nTMX Map Format\n reference.\n\n\nIf you're not finding what you're looking for in these pages, please don't\nhesitate to ask questions on the \nTiled Forum\n.\n\n\nThis documentation is currently work-in-progress. Initially the relevant pages\nfrom the wiki have been ported over, providing a limited amount of\ndocumentation for specific Tiled features. Over time, this should become the\nplace to refer to for any details about using Tiled.\n\n\nIndex\n\n\nTiled User Manual\n\n\n\n\nIntroduction\n\n\nUsing the Terrain Tool\n\n\nUsing Commands\n\n\n\n\nReference\n\n\n\n\nTMX Map Format\n\n\nTMX Changelog\n\n\nLibraries and Frameworks",
-            "title": "Home"
+            "title": "Index"
         },
         {
             "location": "/#tiled-documentation",

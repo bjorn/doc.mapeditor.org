@@ -7,9 +7,10 @@
         
         
         
-        <link rel="shortcut icon" href="../img/favicon.ico">
+        <link rel="shortcut icon" href="../http:/blog.mapeditor.org/favicon.ico">
+        
 
-	<title>Contents - Tiled Documentation</title>
+	<title>Contents - Tiled</title>
 
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -34,11 +35,39 @@
             ga('send', 'pageview');
         </script>
         
+
+        <script>
+function OnScroll() {
+    if ('pageYOffset' in window) {  // all browsers, except IE before version 9
+        var scrollTop = window.pageYOffset;
+        var header = document.getElementById("mkdocsheader");
+        var classList = header.classList;
+        if (scrollTop > 40 && !classList.contains("navbar-fixed-top")) {
+            classList.add("navbar-fixed-top");
+        } else if (scrollTop < 40 && classList.contains("navbar-fixed-top")) {
+            classList.remove("navbar-fixed-top");
+        }
+    }
+}
+        </script>
     </head>
 
-    <body>
+    <body onscroll="OnScroll()">
 
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <!-- Global navigation bar -->
+    <div id="top-navbar-container">
+        <ul id="top-navbar" class="wrap container">
+            <li><a href="http://www.mapeditor.org/"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="http://forum.mapeditor.org/"><i class="fa fa-group"></i> Forum</a></li>
+            <li class="active"><a href="http://doc.mapeditor.org/"><i class="fa fa-book"></i> Documentation</a></li>
+            <li><a href="http://www.mapeditor.org/download"><i class="fa fa-download"></i> Download</a></li>
+            <li><a href="http://www.mapeditor.org/donate"><i class="fa fa-heart"></i> Donate</a></li>
+        </ul>
+    </div>
+
+        <div id="mkdocsheaderwrapper" style="height: 52px;">
+<div id="mkdocsheader" class="navbar navbar-default" role="navigation">
+
     <div class="container">
 
         <!-- Collapsed navigation -->
@@ -52,7 +81,7 @@
             </button>
 
             <!-- Main title -->
-            <a class="navbar-brand" href="..">Tiled Documentation</a>
+            <a class="navbar-brand" href="..">Tiled</a>
         </div>
 
         <!-- Expanded navigation -->
@@ -62,7 +91,7 @@
             
             
                 <li >
-                    <a href="..">Home</a>
+                    <a href="..">Index</a>
                 </li>
             
             
@@ -140,9 +169,10 @@
         </div>
     </div>
 </div>
+</div>
 
         <div class="container">
-            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+            <div class="col-md-3"><div id="mkdocstoc" class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
         <li class="main active"><a href="#tiled-user-manual">Tiled User Manual</a></li>
