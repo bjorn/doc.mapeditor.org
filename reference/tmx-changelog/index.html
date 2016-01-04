@@ -177,6 +177,8 @@ function OnScroll() {
     
         <li class="main active"><a href="#tmx-changelog">TMX Changelog</a></li>
         
+            <li><a href="#tiled-015">Tiled 0.15</a></li>
+        
             <li><a href="#tiled-014">Tiled 0.14</a></li>
         
             <li><a href="#tiled-013">Tiled 0.13</a></li>
@@ -198,6 +200,11 @@ function OnScroll() {
 
 <h1 id="tmx-changelog">TMX Changelog</h1>
 <p>Below are described the changes/additions that were made to the <a href="../tmx-map-format/">TMX format</a> for recent versions of Tiled.</p>
+<h2 id="tiled-015">Tiled 0.15</h2>
+<ul>
+<li>The <code>offsetx</code> and <code>offsety</code> attributes are now also used for <code>imagelayer</code> elements, replacing the <code>x</code> and <code>y</code> attributes previously used. This change was made for consistency with the other layer types.</li>
+<li>The tiles in an image collection tileset are no longer guaranteed to be consecutive, because removing tiles from the collection will no longer change the IDs of other tiles.</li>
+</ul>
 <h2 id="tiled-014">Tiled 0.14</h2>
 <ul>
 <li>Added optional <code>offsetx</code> and <code>offsety</code> attributes to the <code>layer</code> and <code>objectgroup</code> elements. These specify an offset in pixels that is to be applied when rendering the layer. The default values are 0.</li>
@@ -212,8 +219,9 @@ function OnScroll() {
 </ul>
 <h2 id="tiled-011">Tiled 0.11</h2>
 <ul>
-<li>Added <code>hexagonal</code> to the supported values for the <code>orientation</code> attribute on the <code>map</code> element. This also adds <code>staggerindex</code> (<code>even</code> or <code>odd</code>) and <code>staggerdirection</code> (<code>rows</code> or <code>columns</code>) and <code>hexsidelength</code> (integer value) attributes to the <code>map</code> element, in order to support the many variations of staggered hexagonal. The <code>staggerindex</code> attribute is now also supported when using the <code>staggered</code> map orientation.</li>
+<li>Added <code>hexagonal</code> to the supported values for the <code>orientation</code> attribute on the <code>map</code> element. This also adds <code>staggerindex</code> (<code>even</code> or <code>odd</code>) and <code>staggeraxis</code> (<code>x</code> or <code>y</code>) and <code>hexsidelength</code> (integer value) attributes to the <code>map</code> element, in order to support the many variations of staggered hexagonal. The new <code>staggerindex</code> and <code>staggeraxis</code> attributes are also supported when using the <code>staggered</code> map orientation.</li>
 <li>Added an <code>id</code> attribute to the <code>object</code> element, which stores a map-unique ID of the object.</li>
+<li>Added a <code>nextobjectid</code> attribute to the <code>map</code> element, which stores the next available ID for new objects. This number is stored to prevent reuse of the same ID after objects have been removed.</li>
 </ul>
 <h2 id="tiled-010">Tiled 0.10</h2>
 <ul>
