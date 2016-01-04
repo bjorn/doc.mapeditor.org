@@ -204,6 +204,9 @@ function OnScroll() {
 <ul>
 <li>The <code>offsetx</code> and <code>offsety</code> attributes are now also used for <code>imagelayer</code> elements, replacing the <code>x</code> and <code>y</code> attributes previously used. This change was made for consistency with the other layer types.</li>
 <li>The tiles in an image collection tileset are no longer guaranteed to be consecutive, because removing tiles from the collection will no longer change the IDs of other tiles.</li>
+<li>The pure XML and Gzip-compressed tile layer data formats were deprecated, since they didn't have any advantage over other formats. Remaining formats are CSV, base64 and Zlib-compressed layer data.</li>
+<li>Added <code>columns</code> attribute to the <code>tileset</code> element, which specifies the number of tile columns in the tileset. For image collection tilesets it is editable and is used when displaying the tileset.</li>
+<li>The <code>backgroundcolor</code> attribute of the <code>map</code> element will now take the format <code>#AARRGGBB</code> when its alpha value differs from 255. Previously the alpha value was silently discarded.</li>
 </ul>
 <h2 id="tiled-014">Tiled 0.14</h2>
 <ul>

@@ -211,7 +211,7 @@ function OnScroll() {
 <li><b>tileheight:</b> The height of a tile.</li>
 <li><b>staggeraxis:</b> For staggered and hexagonal maps, determines which axis ("x" or "y") is staggered. (since 0.11)</li>
 <li><b>staggerindex:</b> For staggered and hexagonal maps, determines whether the "even" or "odd" indexes along the staggered axis are shifted. (since 0.11)</li>
-<li><b>backgroundcolor:</b> The background color of the map. (since 0.9, optional)</li>
+<li><b>backgroundcolor:</b> The background color of the map. (since 0.9, optional, may include alpha value since 0.15 in the form <code>#AARRGGBB</code>)</li>
 <li><b>nextobjectid:</b> Stores the next available ID for new objects. This number is stored to prevent reuse of the same ID after objects have been removed. (since 0.11)</li>
 </ul>
 <p>The <code>tilewidth</code> and <code>tileheight</code> properties determine the general grid size of the map. The individual tiles may have different sizes. Larger tiles will extend at the top and right (anchored to the bottom left).</p>
@@ -227,8 +227,9 @@ function OnScroll() {
 <li><b>spacing:</b> The spacing in pixels between the tiles in this tileset (applies to the tileset image).</li>
 <li><b>margin:</b> The margin around the tiles in this tileset (applies to the tileset image).</li>
 <li><b>tilecount:</b> The number of tiles in this tileset (since 0.13)</li>
+<li><b>columns:</b> The number of tile columns in the tileset. For image collection tilesets it is editable and is used when displaying the tileset. (since 0.15)</li>
 </ul>
-<p>If there are multiple <code>&lt;tileset&gt;</code> elements, they are in ascending order of their <code>firstgid</code> attribute. The first tileset always has a <code>firstgid</code> value of 1 and it can be assumed that there are no gaps in the valid range of global tile IDs.</p>
+<p>If there are multiple <code>&lt;tileset&gt;</code> elements, they are in ascending order of their <code>firstgid</code> attribute. The first tileset always has a <code>firstgid</code> value of 1. Since Tiled 0.15, image collection tilesets do not necessarily number their tiles consecutively since gaps can occur when removing tiles.</p>
 <p>Can contain: <a href="#tileoffset">tileoffset</a> (since 0.8), <a href="#properties">properties</a> (since 0.8), <a href="#image">image</a>, <a href="#terraintypes">terraintypes</a> (since 0.9), <a href="#tile">tile</a></p>
 <h3 id="tileoffset">&lt;tileoffset&gt;</h3>
 <ul>
