@@ -209,6 +209,7 @@ function OnScroll() {
 <li><b>height:</b> The map height in tiles.</li>
 <li><b>tilewidth:</b> The width of a tile.</li>
 <li><b>tileheight:</b> The height of a tile.</li>
+<li><b>hexsidelength:</b> Only for hexagonal maps. Determines the width or height (depending on the staggered axis) of the tile's edge, in pixels.</li>
 <li><b>staggeraxis:</b> For staggered and hexagonal maps, determines which axis ("x" or "y") is staggered. (since 0.11)</li>
 <li><b>staggerindex:</b> For staggered and hexagonal maps, determines whether the "even" or "odd" indexes along the staggered axis are shifted. (since 0.11)</li>
 <li><b>backgroundcolor:</b> The background color of the map. (since 0.9, optional, may include alpha value since 0.15 in the form <code>#AARRGGBB</code>)</li>
@@ -382,7 +383,7 @@ for (int y = 0; y &lt; map_height; ++y) {
 </ul>
 <p>While tile layers are very suitable for anything repetitive aligned to the tile grid, sometimes you want to annotate your map with other information, not necessarily aligned to the grid. Hence the objects have their coordinates and size in pixels, but you can still easily align that to the grid when you want to.</p>
 <p>You generally use objects to add custom information to your tile map, such as spawn points, warps, exits, etc.</p>
-<p>When the object has a <code>gid</code> set, then it is represented by the image of the tile with that global ID. Currently that means <code>width</code> and <code>height</code> are ignored for such objects. The image alignment currently depends on the map orientation. In orthogonal orientation it's aligned to the bottom-left while in isometric it's aligned to the bottom-center.</p>
+<p>When the object has a <code>gid</code> set, then it is represented by the image of the tile with that global ID. The image alignment currently depends on the map orientation. In orthogonal orientation it's aligned to the bottom-left while in isometric it's aligned to the bottom-center.</p>
 <p>Can contain: <a href="#properties">properties</a>, <a href="#ellipse">ellipse</a> (since 0.9), <a href="#polygon">polygon</a>, <a href="#polyline">polyline</a>, <i>image</i></p>
 <h3 id="ellipse">&lt;ellipse&gt;</h3>
 <p>Used to mark an object as an ellipse. The existing <code>x</code>, <code>y</code>, <code>width</code> and <code>height</code> attributes are used to determine the size of the ellipse.</p>
