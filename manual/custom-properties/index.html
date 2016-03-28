@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="../../http:/blog.mapeditor.org/favicon.ico">
         
 
-	<title>Introduction - Tiled</title>
+	<title>Custom Properties - Tiled</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -104,12 +104,12 @@ function OnScroll() {
                             <a href="../">Contents</a>
                         </li>
                     
-                        <li class="active">
-                            <a href="./">Introduction</a>
+                        <li >
+                            <a href="../introduction/">Introduction</a>
                         </li>
                     
-                        <li >
-                            <a href="../custom-properties/">Custom Properties</a>
+                        <li class="active">
+                            <a href="./">Custom Properties</a>
                         </li>
                     
                         <li >
@@ -150,12 +150,12 @@ function OnScroll() {
             <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
                 <li >
-                    <a rel="next" href="../">
+                    <a rel="next" href="../introduction/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../custom-properties/">
+                    <a rel="prev" href="../using-the-terrain-tool/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -179,26 +179,94 @@ function OnScroll() {
             <div class="col-md-3"><div id="mkdocstoc" class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#introduction">Introduction</a></li>
+        <li class="main active"><a href="#custom-properties">Custom Properties</a></li>
         
-            <li><a href="#about-tiled">About Tiled</a></li>
+            <li><a href="#overview">Overview</a></li>
         
-            <li><a href="#getting-started">Getting Started</a></li>
+            <li><a href="#adding-properties">Adding Properties</a></li>
+        
+            <li><a href="#predefining-properties">Predefining Properties</a></li>
+        
+            <li><a href="#future-extensions">Future Extensions</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="introduction">Introduction</h1>
-<h2 id="about-tiled">About Tiled</h2>
-<p><strong>Tiled is a 2D level editor that helps you develop the content of your game. Its primary feature is to edit tile maps of various forms, but it also supports free image placement as well as powerful ways to annotate your level with extra information used by the game. Tiled focuses on general flexiblity while trying to stay intuitive.</strong></p>
-<p>In terms of tile maps, it supports straight rectangular tile layers, but also projected isometric, staggered isometric and staggered hexagonal layers. A tileset can be either a single image containing many tiles, or it can be a collection of individual images. In order to support certain depth faking techniques, tiles and layers can be offset by a custom distance and their rendering order can be configured.</p>
-<p>The primary tool for editing tile layers is a stamp brush that allows efficient painting and copying of tile areas. It also supports drawing lines and circles. In addition, there are several selection tools and a tool that does <a href="../using-the-terrain-tool/">automatic terrain transitions</a>. Finally, it can apply changes based on <a href="https://github.com/bjorn/tiled/wiki/Automapping">pattern-matching</a> to automate parts of your work.</p>
-<p>Tiled also supports object layers, which traditionally were only for annotating your map with information but more recently they can also be used to place images. You can add rectangle, ellipse, polygon, polyline and tile objects. Object placement is not limited to the tile grid and objects can also be scaled or rotated. Object layers offer a lot of flexibility to add almost any information to your level that your game needs.</p>
-<p>Other things worth mentioning are the support for adding custom map or tileset formats through plugins, the tile stamp memory, tile animation support and the tile collision editor.</p>
-<h2 id="getting-started">Getting Started</h2>
-<p><em>Most of the manual still needs to be written, including this section. Fortunately, there is a very nice <a href="http://www.gamefromscratch.com/post/2015/10/14/Tiled-Map-Editor-Tutorial-Series.aspx">Tiled Map Editor Tutorial Series</a> on GamesFromScratch.com. In addition, the support for Tiled in various <a href="../../reference/support-for-tmx-maps/">engines and frameworks</a> often comes with some usage information.</em></p></div>
+<h2 id="custom-properties">Custom Properties</h2>
+<h3 id="overview">Overview</h3>
+<p>One of the major strengths of Tiled is that it allows setting custom properties
+on all of its basic data structures. This way it is possible to include many
+forms of custom information, which can later be used by your game or by the
+framework you're using to integrate Tiled maps.</p>
+<p>Custom properties are displayed in the Properties view. This view is
+context-sensitive, usually displaying the properties of the last selected
+object. For tiles in a tileset or objects on an object layer, it also supports
+multi-selection.</p>
+<p><img alt="Properties View" src="../images/properties/properties-dock.png" /></p>
+<h3 id="adding-properties">Adding Properties</h3>
+<p>When you add a property (using the '+' button at the bottom of the Properties
+view), you are prompted for its name and its type. Currently Tiled supports the
+following basic property types:</p>
+<ul>
+<li><strong>string</strong> (any text)</li>
+<li><strong>float</strong> (a floating point number)</li>
+<li><strong>int</strong> (a whole number)</li>
+<li><strong>bool</strong> (true or false)</li>
+</ul>
+<p><img alt="Add Property Dialog" src="../images/properties/add-property.png" /></p>
+<p>The property type is used to choose a custom editor in the Properties view.
+Choosing a number or boolean type also avoids that the value will get quoted in
+JSON and Lua exports.</p>
+<h3 id="predefining-properties">Predefining Properties</h3>
+<p>Usually you only use a limited set of object types in your game, and each type
+of object has a fixed set of possible properties, with specific types and
+default values. To save you time, Tiled allows predefining these properties
+based on the "Type" field for objects. You can set this up using the Object
+Types Editor, available from the <em>View</em> menu.</p>
+<p><img alt="Object Types Editor" src="../images/properties/object-types-editor.png" /></p>
+<p>By default, Tiled stores these object types in the user settings. However, since
+you'll often want to share them with other people in your project, you can
+export your object types or change the storage location of the object types
+file. A simple XML file with self-explanatory contents is used to store your
+object types.</p>
+<p>The color not only affects the rendering of the various shapes of objects, but
+is also the color of the label which will show up if you give your object a
+name.</p>
+<p>To make the predefined properties show up in the Properties view, all you need
+to do is to enter the name of the type in the built-in "Type" property. Usually
+this is what you're doing already anyway to tell your engine what kind of object
+it is dealing with.
+<div class="future"></p>
+<h3 id="future-extensions">Future Extensions</h3>
+<p>There are several types of custom properties I'd like to add:</p>
+<ul>
+<li><strong>File references</strong>, which would feature a button to easily choose a file.</li>
+<li><strong>Enumerations</strong>, where you can predefine all possible values and it forms a
+  combo box (<a href="https://github.com/bjorn/tiled/issues/1211">#1211</a>).</li>
+<li><strong>Object references</strong>, which would allow easily linking objects together and
+  Tiled could display such connections
+  (<a href="https://github.com/bjorn/tiled/issues/707">#707</a>).</li>
+<li><strong>Dictionary properties</strong>, which would be properties that can contain any
+  number of other properties as children
+  (<a href="https://github.com/bjorn/tiled/issues/489">#489</a>).</li>
+</ul>
+<p>I'd also like to add <strong>multi-line editing</strong> of string properties
+(<a href="https://github.com/bjorn/tiled/issues/205">#205</a>). And it would be nice to add
+support for <strong>limiting property values</strong>, like length of string properties or a
+minimum/maximum on number values.</p>
+<p>Apart from predefining properties based on object type, I'd like to add support
+for <strong>predefining the properties for each data type</strong>. So defining which custom
+properties are valid for maps, tilesets, layers, etc.</p>
+<p>Finally, the predefined properties would work very well together with explicit
+<strong>support for projects</strong>. Then you could switch between different projects or
+get started on an existing project, without needing to configure Tiled to use
+the right object type definitions.</p>
+<p>If you like any of these plans, please help me getting around to it faster by
+<a href="https://www.patreon.com/bjorn?ty=h">becoming a patron</a>. The more support I
+receive the more time I can afford to spend improving Tiled!
+</div></p></div>
         </div>
 
         <footer class="col-md-12">

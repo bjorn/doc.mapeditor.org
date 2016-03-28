@@ -109,6 +109,10 @@ function OnScroll() {
                         </li>
                     
                         <li >
+                            <a href="../../manual/custom-properties/">Custom Properties</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../manual/using-the-terrain-tool/">Using the Terrain Tool</a>
                         </li>
                     
@@ -177,6 +181,8 @@ function OnScroll() {
     
         <li class="main active"><a href="#tmx-changelog">TMX Changelog</a></li>
         
+            <li><a href="#tiled-016">Tiled 0.16</a></li>
+        
             <li><a href="#tiled-015">Tiled 0.15</a></li>
         
             <li><a href="#tiled-014">Tiled 0.14</a></li>
@@ -200,13 +206,17 @@ function OnScroll() {
 
 <h1 id="tmx-changelog">TMX Changelog</h1>
 <p>Below are described the changes/additions that were made to the <a href="../tmx-map-format/">TMX format</a> for recent versions of Tiled.</p>
+<h2 id="tiled-016">Tiled 0.16</h2>
+<ul>
+<li>The <a href="../tmx-map-format/#property"><code>property</code></a> element gained a <code>type</code> attribute, storing the type of the value. Currently supported types are <code>string</code> (the default), <code>int</code>, <code>float</code> and <code>bool</code>.</li>
+</ul>
 <h2 id="tiled-015">Tiled 0.15</h2>
 <ul>
-<li>The <code>offsetx</code> and <code>offsety</code> attributes are now also used for <code>imagelayer</code> elements, replacing the <code>x</code> and <code>y</code> attributes previously used. This change was made for consistency with the other layer types.</li>
+<li>The <code>offsetx</code> and <code>offsety</code> attributes are now also used for <a href="../tmx-map-format/#imagelayer"><code>imagelayer</code></a> elements, replacing the <code>x</code> and <code>y</code> attributes previously used. This change was made for consistency with the other layer types.</li>
 <li>The tiles in an image collection tileset are no longer guaranteed to be consecutive, because removing tiles from the collection will no longer change the IDs of other tiles.</li>
 <li>The pure XML and Gzip-compressed tile layer data formats were deprecated, since they didn't have any advantage over other formats. Remaining formats are CSV, base64 and Zlib-compressed layer data.</li>
-<li>Added <code>columns</code> attribute to the <code>tileset</code> element, which specifies the number of tile columns in the tileset. For image collection tilesets it is editable and is used when displaying the tileset.</li>
-<li>The <code>backgroundcolor</code> attribute of the <code>map</code> element will now take the format <code>#AARRGGBB</code> when its alpha value differs from 255. Previously the alpha value was silently discarded.</li>
+<li>Added <code>columns</code> attribute to the <a href="../tmx-map-format/#tileset"><code>tileset</code></a> element, which specifies the number of tile columns in the tileset. For image collection tilesets it is editable and is used when displaying the tileset.</li>
+<li>The <code>backgroundcolor</code> attribute of the <a href="../tmx-map-format/#map"><code>map</code></a> element will now take the format <code>#AARRGGBB</code> when its alpha value differs from 255. Previously the alpha value was silently discarded.</li>
 </ul>
 <h2 id="tiled-014">Tiled 0.14</h2>
 <ul>

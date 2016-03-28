@@ -109,6 +109,10 @@ function OnScroll() {
                         </li>
                     
                         <li >
+                            <a href="../../manual/custom-properties/">Custom Properties</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../manual/using-the-terrain-tool/">Using the Terrain Tool</a>
                         </li>
                     
@@ -417,9 +421,11 @@ for (int y = 0; y &lt; map_height; ++y) {
 <h3 id="property">&lt;property&gt;</h3>
 <ul>
 <li><b>name:</b> The name of the property.</li>
+<li><b>type:</b> The type of the property. Can be <code>string</code> (default), <code>int</code>, <code>float</code> or <code>bool</code>. (since 0.16)</li>
 <li><b>value:</b> The value of the property.</li>
 </ul>
-<p>When the property spans contains newlines, the current versions of Tiled Java and Tiled Qt will write out the value as characters contained inside the <code>property</code> element rather than as the <code>value</code> attribute. However, it is at the moment not really possible to edit properties consisting of multiple lines with Tiled.</p>
+<p>Boolean properties have a value of either "true" or "false".</p>
+<p>When a string property spans contains newlines, the current versions of Tiled Java and Tiled Qt will write out the value as characters contained inside the <code>property</code> element rather than as the <code>value</code> attribute. However, it is at the moment not really possible to edit properties consisting of multiple lines with Tiled.</p>
 <p>It is possible that a future version of the TMX format will switch to always saving property values inside the element rather than as an attribute.</p>
 <hr />
 <p><img alt="Creative Commons License" src="../CC-BY-SA.png" /></p>
