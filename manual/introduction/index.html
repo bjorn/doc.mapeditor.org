@@ -196,7 +196,19 @@ function OnScroll() {
 <p>Tiled also supports object layers, which traditionally were only for annotating your map with information but more recently they can also be used to place images. You can add rectangle, ellipse, polygon, polyline and tile objects. Object placement is not limited to the tile grid and objects can also be scaled or rotated. Object layers offer a lot of flexibility to add almost any information to your level that your game needs.</p>
 <p>Other things worth mentioning are the support for adding custom map or tileset formats through plugins, the tile stamp memory, tile animation support and the tile collision editor.</p>
 <h2 id="getting-started">Getting Started</h2>
-<p><em>Most of the manual still needs to be written, including this section. Fortunately, there is a very nice <a href="http://www.gamefromscratch.com/post/2015/10/14/Tiled-Map-Editor-Tutorial-Series.aspx">Tiled Map Editor Tutorial Series</a> on GamesFromScratch.com. In addition, the support for Tiled in various <a href="../../reference/support-for-tmx-maps/">engines and frameworks</a> often comes with some usage information.</em></p></div>
+<h3 id="creating-a-new-map">Creating a New Map</h3>
+<p>When launching Tiled for the first time, we are greeted with the following default window layout:</p>
+<p><img alt="Tiled Window" src="../images/introduction/tiled-window.png" /></p>
+<p>There is a large gray area in the middle because no map is open yet. The first thing we'll do is to start a new map with <em>File -&gt; New...</em> (<code>Ctrl+N</code>). The following dialog will pop up:</p>
+<p><img alt="New Map" src="../images/introduction/tiled-new-map.png" /></p>
+<p>Here, we choose the initial map size, tile size, orientation, tile layer format and tile render order (only supported for <em>Orthogonal</em> maps). All of these things can be changed later as needed, so it's not important to get it all right the first time.</p>
+<p>After pressing <em>OK</em>, we'll see the tile grid and an initial tile layer will be added to the map. However, before we can start using any tiles we need to add a tileset. Choose <em>Map -&gt; New Tileset...</em> to open the New Tileset dialog:</p>
+<p><img alt="New Tileset" src="../images/introduction/tiled-new-tileset.png" /></p>
+<p>Click the <em>Browse...</em> button and select the <code>tmw_desert_spacing.png</code> tileset from the examples shipping with Tiled (or use one of your own if you wish). This example tileset uses a tile size of 32x32. It also has a one pixel <em>margin</em> around the tiles and a one pixel <em>spacing</em> in between the tiles (this is pretty rare actually, usually you should leave these values on 0).</p>
+<p>After pressing <em>OK</em>, Tiled should look as follows:</p>
+<p><img alt="Tileset Added" src="../images/introduction/tiled-new-map-tileset-added.png" /></p>
+<p>We're ready to select some tiles and start painting!</p>
+<p><em>Most of the manual still needs to be written. Fortunately, there is a very nice <a href="http://www.gamefromscratch.com/post/2015/10/14/Tiled-Map-Editor-Tutorial-Series.aspx">Tiled Map Editor Tutorial Series</a> on GamesFromScratch.com. In addition, the support for Tiled in various <a href="../../reference/support-for-tmx-maps/">engines and frameworks</a> often comes with some usage information.</em></p></div>
         </div>
 
         <footer class="col-md-12">
