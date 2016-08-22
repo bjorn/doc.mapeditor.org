@@ -200,9 +200,11 @@ function OnScroll() {
 <p>The 'Edit Commands' dialog contains a list of commands. Each command has several properties:</p>
 <ul>
 <li><strong>Name</strong>: The name of the command as it will be shown in the drop down list, so you can easily identify it.</li>
-<li><strong>Command</strong>: The actual shell command to execute. This probably starts with an executable program followed by arguments.<ul>
-<li>The token <code>%mapfile</code> is replaced with the current maps full path.</li>
-<li>The token <code>%objecttype</code> is replaced with the type of the currently selected object, if any. (since Tiled 0.12)</li>
+<li><strong>Command</strong>: The actual shell command to execute. This usually starts with an executable program followed by arguments. You can use the following variables:<ul>
+<li><code>%mapfile</code> is replaced with the current maps full path.</li>
+<li><code>%objecttype</code> is replaced with the type of the currently selected object, if any. (since Tiled 0.12)</li>
+<li><code>%objectid</code> is replaced with the ID of the currently selected object, if any. (since Tiled 0.17)</li>
+<li><code>%layername</code> is replaced with the name of the currently selected layer. (since Tiled 0.17)</li>
 </ul>
 </li>
 <li><strong>Enabled</strong>: A quick way to disable commands and remove them from the drop down list.<ul>
@@ -211,6 +213,7 @@ function OnScroll() {
 </li>
 </ul>
 <p>You can also change whether or not it should save the current map before running commands.</p>
+<p>Note that if the program or any of its arguments contain spaces, these parts need to be quoted.</p>
 <h2 id="example-commands">Example Commands</h2>
 <p>Launching a custom game called "mygame" with a -loadmap parameter and the mapfile:</p>
 <pre><code>mygame -loadmap %mapfile
@@ -218,7 +221,10 @@ function OnScroll() {
 <p>On Mac, remember that Apps are folders, so you need to run the actual executable from within the <code>Contents/MacOS</code> folder:</p>
 <pre><code>/Applications/TextEdit.app/Contents/MacOS/TextEdit %mapfile
 </code></pre>
-<p>Some OS's also have a command to open files in the appropriate program:</p>
+<p>Or use <code>open</code> (and note the quotes since one of the arguments contains spaces):</p>
+<pre><code>open -a "/Applications/CoronaSDK/Corona Simulator.app" /Users/user/Desktop/project/main.lua
+</code></pre>
+<p>Some systems also have a command to open files in the appropriate program:</p>
 <ul>
 <li>OSX: <code>open %mapfile</code></li>
 <li>GNOME systems like Ubuntu: <code>gnome-open %mapfile</code></li>
