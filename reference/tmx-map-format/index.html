@@ -255,6 +255,7 @@ function OnScroll() {
 <li><b>width:</b> The image width in pixels (optional, used for tile index correction when the image changes)</li>
 <li><b>height:</b> The image height in pixels (optional)</li>
 </ul>
+<p>Note that it is not currently possible to use Tiled to create maps with embedded image data, even though the TMX format supports this. It is possible to create such maps using <code>libtiled</code> (Qt/C++) or <a href="https://pypi.python.org/pypi/tmxlib">tmxlib</a> (Python).</p>
 <p>Can contain: <a href="#data">data</a> (since 0.9)</p>
 <h3 id="terraintypes">&lt;terraintypes&gt;</h3>
 <p>This element defines an array of terrain types, which can be referenced from the <code>terrain</code> attribute of the <code>tile</code> element.</p>
@@ -425,12 +426,13 @@ for (int y = 0; y &lt; map_height; ++y) {
 <h3 id="property">&lt;property&gt;</h3>
 <ul>
 <li><b>name:</b> The name of the property.</li>
-<li><b>type:</b> The type of the property. Can be <code>string</code> (default), <code>int</code>, <code>float</code> or <code>bool</code>. (since 0.16)</li>
+<li><b>type:</b> The type of the property. Can be <code>string</code> (default), <code>int</code>, <code>float</code>, <code>bool</code>, <code>color</code> or <code>file</code> (since 0.16, with <code>color</code> and <code>file</code> added in 0.17).</li>
 <li><b>value:</b> The value of the property.</li>
 </ul>
 <p>Boolean properties have a value of either "true" or "false".</p>
-<p>When a string property spans contains newlines, the current versions of Tiled Java and Tiled Qt will write out the value as characters contained inside the <code>property</code> element rather than as the <code>value</code> attribute. However, it is at the moment not really possible to edit properties consisting of multiple lines with Tiled.</p>
-<p>It is possible that a future version of the TMX format will switch to always saving property values inside the element rather than as an attribute.</p>
+<p>Color properties are stored in the format <code>#AARRGGBB</code>.</p>
+<p>File properties are stored as paths relative from the location of the map file.</p>
+<p>When a string property contains newlines, the current version of Tiled will write out the value as characters contained inside the <code>property</code> element rather than as the <code>value</code> attribute. It is possible that a future version of the TMX format will switch to always saving property values inside the element rather than as an attribute.</p>
 <hr />
 <p><img alt="Creative Commons License" src="../CC-BY-SA.png" /></p>
 <p>The <strong>TMX Map Format</strong> by <a href="http://www.mapeditor.org">http://www.mapeditor.org</a> is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p></div>
