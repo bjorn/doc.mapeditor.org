@@ -1,194 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        
-        
-        <link rel="shortcut icon" href="../../http:/blog.mapeditor.org/favicon.ico">
-        
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../http://blog.mapeditor.org/favicon.ico">
+  
+  <title>Libraries and Frameworks - Tiled Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-	<title>Libraries and Frameworks - Tiled</title>
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Libraries and Frameworks";
+    var mkdocs_page_input_path = "reference/support-for-tmx-maps.md";
+    var mkdocs_page_url = "/reference/support-for-tmx-maps/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
-        <link rel="stylesheet" href="../../css/highlight.css">
-        <link href="../../css/base.css" rel="stylesheet">
-        <link href="../../css/extra.css" rel="stylesheet">
+      ga('create', 'UA-380618-1', 'mapeditor.org');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
 
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
+<body class="wy-body-for-nav" role="document">
 
-        
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  <div class="wy-grid-for-nav">
 
-            ga('create', 'UA-380618-1', 'mapeditor.org');
-            ga('send', 'pageview');
-        </script>
-        
-
-        <script>
-function OnScroll() {
-    if ('pageYOffset' in window) {  // all browsers, except IE before version 9
-        var scrollTop = window.pageYOffset;
-        var header = document.getElementById("mkdocsheader");
-        var classList = header.classList;
-        if (scrollTop > 40 && !classList.contains("navbar-fixed-top")) {
-            classList.add("navbar-fixed-top");
-        } else if (scrollTop < 40 && classList.contains("navbar-fixed-top")) {
-            classList.remove("navbar-fixed-top");
-        }
-    }
-}
-        </script>
-    </head>
-
-    <body onscroll="OnScroll()">
-
-    <!-- Global navigation bar -->
-    <div id="top-navbar-container">
-        <ul id="top-navbar" class="wrap container">
-            <li><a href="http://www.mapeditor.org/"><i class="fa fa-home"></i> Home</a></li>
-            <li><a href="http://discourse.mapeditor.org/"><i class="fa fa-group"></i> Forum</a></li>
-            <li class="active"><a href="http://doc.mapeditor.org/"><i class="fa fa-book"></i> Documentation</a></li>
-        </ul>
-    </div>
-
-        <div id="mkdocsheaderwrapper" style="height: 52px;">
-<div id="mkdocsheader" class="navbar navbar-default" role="navigation">
-
-    <div class="container">
-
-        <!-- Collapsed navigation -->
-        <div class="navbar-header">
-            <!-- Expander button -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-            <!-- Main title -->
-            <a class="navbar-brand" href="../..">Tiled</a>
-        </div>
-
-        <!-- Expanded navigation -->
-        <div class="navbar-collapse collapse">
-            <!-- Main navigation -->
-            <ul class="nav navbar-nav">
-            
-            
-                <li >
-                    <a href="../..">Index</a>
-                </li>
-            
-            
-            
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manual <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                    
-                        <li >
-                            <a href="../../manual/">Contents</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../manual/introduction/">Introduction</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../manual/custom-properties/">Custom Properties</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../manual/using-the-terrain-tool/">Using the Terrain Tool</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../manual/using-commands/">Using Commands</a>
-                        </li>
-                    
-                    </ul>
-                </li>
-            
-            
-            
-                <li class="dropdown active">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                    
-                        <li >
-                            <a href="../tmx-map-format/">TMX Map Format</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../tmx-changelog/">TMX Changelog</a>
-                        </li>
-                    
-                        <li class="active">
-                            <a href="./">Libraries and Frameworks</a>
-                        </li>
-                    
-                    </ul>
-                </li>
-            
-            
-            </ul>
-
-            <!-- Search, Navigation and Repo links -->
-            <ul class="nav navbar-nav navbar-right">
-                <li >
-                    <a rel="next" href="../tmx-changelog/">
-                        <i class="fa fa-arrow-left"></i> Previous
-                    </a>
-                </li>
-                <li class="disabled">
-                    <a rel="prev" >
-                        Next <i class="fa fa-arrow-right"></i>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="https://github.com/bjorn/tiled">
-                        
-                            <i class="fa fa-github"></i>
-                        
-                        GitHub
-                    </a>
-                </li>
-                
-            </ul>
-        </div>
-    </div>
-</div>
-</div>
-
-        <div class="container">
-            <div class="col-md-3"><div id="mkdocstoc" class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#libraries-and-frameworks">Libraries and Frameworks</a></li>
-        
-            <li><a href="#support-by-language">Support by Language</a></li>
-        
-            <li><a href="#support-by-framework">Support by Framework</a></li>
-        
-    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Tiled Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Manual</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../manual/">Contents</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../manual/introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../manual/custom-properties/">Custom Properties</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../manual/using-the-terrain-tool/">Using the Terrain Tool</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../manual/using-commands/">Using Commands</a>
+                </li>
     </ul>
-</div></div>
-            <div class="col-md-9" role="main">
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Reference</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../tmx-map-format/">TMX Map Format</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../tmx-changelog/">TMX Changelog</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Libraries and Frameworks</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#libraries-and-frameworks">Libraries and Frameworks</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#support-by-language">Support by Language</a></li>
+        
+            <li><a class="toctree-l4" href="#support-by-framework">Support by Framework</a></li>
+        
+        </ul>
+    
 
-<h1 id="libraries-and-frameworks">Libraries and Frameworks</h1>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Tiled Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Reference &raquo;</li>
+        
+      
+    
+    <li>Libraries and Frameworks</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/bjorn/tiled/edit/master/docs/reference/support-for-tmx-maps.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="libraries-and-frameworks">Libraries and Frameworks<a class="headerlink" href="#libraries-and-frameworks" title="Permanent link">&para;</a></h1>
 <p>There are many libraries available for reading and/or writing maps stored in
 the <a href="../tmx-map-format/">TMX map format</a> as well as many development
 frameworks that include support for TMX maps. This list is divided into two
@@ -199,13 +174,13 @@ sections:</p>
 </ul>
 <p>First list is for developers who plan on implementing their own renderer. Second list is for developers already using (or considering) a particular game engine / graphics library who would rather pass on having to write their own tilemap renderer.</p>
 <p><em>For updates to this page please open a pull request or issue <a href="https://github.com/bjorn/tiled/issues">on github</a>, thanks!</em></p>
-<h2 id="support-by-language">Support by Language</h2>
+<h2 id="support-by-language">Support by Language<a class="headerlink" href="#support-by-language" title="Permanent link">&para;</a></h2>
 <p>These libraries typically include only a TMX parser, but no rendering support. They can be used universally and should not require a specific game engine or graphics library.</p>
-<h3 id="c">C</h3>
+<h3 id="c">C<a class="headerlink" href="#c" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/baylej/tmx/">TMX</a> - XML and JSON map loader with Allegro5 and SDL2 examples (BSD).</li>
 </ul>
-<h3 id="c_1">C++</h3>
+<h3 id="c_1">C++<a class="headerlink" href="#c_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="http://www.catnapgames.com/blog/2011/10/10/simple-tmx-tilemap-parser.html">C++/Boost</a> by Tomas Andrle (limited functionality, single cpp file)</li>
 <li><a href="https://github.com/andrewrk/tmxparser">C++/TinyXML based tmx-parser</a> (BSD)</li>
@@ -216,8 +191,9 @@ sections:</p>
 <li><a href="https://github.com/solar-storm-studios/TMXParser">TMXParser</a> General *.tmx tileset data loader. Intended to be used with TSXParser for external tileset loading. (No internal tileset support)</li>
 <li><a href="https://github.com/solar-storm-studios/TSXParser">TSXParser</a> General *.tsx tileset data loader. Intended to be used with TMXParser.</li>
 <li><a href="https://bitbucket.org/martingrant/tmxloader">TMXLoader</a> based on <a href="http://rapidxml.sourceforge.net/">RapidXml</a>. Limited functionality (check the <a href="http://www.midnightpacific.com/portfolio/tmxloader-for-tiled-map-editor/">website</a> for details).</li>
+<li><a href="https://github.com/fallahn/tmxlite">tmxlite</a> C++14 map parser with compressed map support but no external linking required. Includes examples for SFML and SDL2 rendering. Currently has full tmx support up to 0.16. (Zlib/libpng)</li>
 </ul>
-<h3 id="cnet">C#/.NET</h3>
+<h3 id="cnet">C#/.NET<a class="headerlink" href="#cnet" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/craftworkgames/MonoGame.Extended">MonoGame.Extended</a> has a Tiled map loader and renderer that works with MonoGame on all platforms that support portable class libraries.</li>
 <li><a href="https://github.com/zachmu/tiled-xna">XNA map loader</a> by Kevin Gadd, extended by Stephen Belanger and Zach Musgrave (has dependency on XNA but supposedly can be turned into a standalone parser easily)</li>
@@ -226,19 +202,19 @@ sections:</p>
 <li><a href="https://github.com/gwicksted/TmxCSharp">TmxCSharp</a>: Useful for multi-layer orthographic tile engines. No framework dependencies, used with a custom OpenTK tile engine soon to be open source, tested with Tiled 0.8.1 (multiple output formats). MIT license.</li>
 <li><a href="https://github.com/aalmik/tmx-mapper-pcl">tmx-mapper-pcl</a>: PCL library for parsing Tiled map TMX files. This library could be used with MonoGame and Windows Runtime Universal apps.</li>
 </ul>
-<h3 id="d">D</h3>
+<h3 id="d">D<a class="headerlink" href="#d" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://gist.github.com/gdm85/9896961">tiledMap.d</a> simple single-layer and single-tileset example to load a map and its tileset in <a href="http://dlang.org/">D language</a>. It also contains basic rendering logic using <a href="https://github.com/Jebbs/DSFML/">DSFML</a></li>
 </ul>
-<h3 id="go">Go</h3>
+<h3 id="go">Go<a class="headerlink" href="#go" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/salviati/go-tmx">github.com/salviati/go-tmx/tmx</a></li>
 </ul>
-<h3 id="haskell">Haskell</h3>
+<h3 id="haskell">Haskell<a class="headerlink" href="#haskell" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="http://hackage.haskell.org/package/htiled">htiled</a> by <a href="https://github.com/chrra">Christian Rødli Amble</a>.</li>
 </ul>
-<h3 id="java">Java</h3>
+<h3 id="java">Java<a class="headerlink" href="#java" title="Permanent link">&para;</a></h3>
 <ul>
 <li>A library for loading TMX files is included with Tiled at <a href="https://github.com/bjorn/tiled/tree/master/util/java/libtiled-java">util/java/libtiled-java</a>.</li>
 <li>Android-Specific:<ul>
@@ -247,77 +223,77 @@ sections:</p>
 </ul>
 </li>
 </ul>
-<h3 id="php">PHP</h3>
+<h3 id="php">PHP<a class="headerlink" href="#php" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/sebbu2/php-tmx-viewer">PHP TMX Viewer</a> by sebbu : render the map as an image (allow some modifications as well)</li>
 </ul>
-<h3 id="pike">Pike</h3>
+<h3 id="pike">Pike<a class="headerlink" href="#pike" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://gitlab.com/tmx-parser/tmx-parser">TMX parser</a>: a simple loader for TMX maps (CSV format only).</li>
 </ul>
-<h3 id="processing">Processing</h3>
+<h3 id="processing">Processing<a class="headerlink" href="#processing" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/linux-man/ptmx">linux-man/ptmx</a>: Add Tiled maps to your Processing sketch.</li>
 </ul>
-<h3 id="python">Python</h3>
+<h3 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="http://pytmxlib.readthedocs.org/en/latest/">pytmxlib</a>: library for programmatic manipulation of TMX maps</li>
 <li><a href="http://python-tmx.nongnu.org">python-tmx</a>: a simple library for reading and writing TMX files.</li>
 </ul>
-<h3 id="ruby">Ruby</h3>
+<h3 id="ruby">Ruby<a class="headerlink" href="#ruby" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/shawn42/tmx">tmx gem</a> by erisdiscord</li>
 </ul>
-<h3 id="vala">Vala</h3>
+<h3 id="vala">Vala<a class="headerlink" href="#vala" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/JumpLink/librpg">librpg</a> A library to load and handle spritesets (own format) and orthogonal TMX maps.</li>
 </ul>
-<h2 id="support-by-framework">Support by Framework</h2>
+<h2 id="support-by-framework">Support by Framework<a class="headerlink" href="#support-by-framework" title="Permanent link">&para;</a></h2>
 <p>Following entries are integrated solutions for specific game engines. They are typically of little to no use if you're not using said game engine.</p>
-<h3 id="andengine">AndEngine</h3>
+<h3 id="andengine">AndEngine<a class="headerlink" href="#andengine" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="http://www.andengine.org/">AndEngine</a> by Nicolas Gramlich supports <a href="http://www.andengine.org/blog/2010/07/andengine-tiledmaps-in-the-tmx-format/">rendering TMX maps</a></li>
 </ul>
-<h3 id="allegro">Allegro</h3>
+<h3 id="allegro">Allegro<a class="headerlink" href="#allegro" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/dradtke/allegro_tiled">allegro_tiled</a> integrates Tiled support with <a href="http://alleg.sourceforge.net/">Allegro 5</a>.</li>
 </ul>
-<h3 id="cocos2d">cocos2d</h3>
+<h3 id="cocos2d">cocos2d<a class="headerlink" href="#cocos2d" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="http://python.cocos2d.org/">cocos2d (Python)</a> supports loading <a href="http://python.cocos2d.org/doc/programming_guide/tiled_map.html">Tiled maps</a> through its <code>cocos.tiles</code> module.</li>
 <li><a href="http://www.cocos2d-x.org/">cocos2d-x (C++)</a> supports loading TMX maps through the <a href="http://www.cocos2d-x.org/reference/native-cpp/V2.1.4/da/d68/classcocos2d_1_1_c_c_t_m_x_tiled_map.html">CCTMXTiledMap</a> class.</li>
 <li><a href="http://www.cocos2d-objc.org/">cocos2d-objc (Objective-C, Swift)</a> (previously known as: cocos2d-iphone, cocos2d-swift, cocos2d-spritebuilder) supports loading TMX maps through <a href="http://cocos2d.spritebuilder.com/docs/api/Classes/CCTiledMap.html">CCTiledMap</a></li>
 <li><a href="http://tilemapkit.com">TilemapKit</a> is a tilemapping framework for Cocos2D. It supports all TMX tilemap types, including staggered iso and all hex variations. No longer in development.</li>
 </ul>
-<h3 id="construct-2-scirra">Construct 2 - Scirra</h3>
+<h3 id="construct-2-scirra">Construct 2 - Scirra<a class="headerlink" href="#construct-2-scirra" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="http://www.scirra.com">Construct 2</a>, since the Beta Release 149, officially supports TMX maps, and importing it by simple dragging the file inside the editor. <a href="https://www.scirra.com/construct2/releases/r149">Official Note</a></li>
 </ul>
-<h3 id="corona-sdk">Corona SDK</h3>
+<h3 id="corona-sdk">Corona SDK<a class="headerlink" href="#corona-sdk" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/ponywolf/ponytiled">PonyTiled</a> is a simple Tiled Map Loader for Corona SDK (<a href="http://discourse.mapeditor.org/t/new-lua-coronasdk-framework-ponytiled/1826">forum announcement</a>)</li>
 <li><a href="https://github.com/GymbylCoding/Dusk-Engine">Dusk Engine</a> is a fully featured Tiled map game engine for Corona SDK</li>
 </ul>
-<h3 id="flixel">Flixel</h3>
+<h3 id="flixel">Flixel<a class="headerlink" href="#flixel" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Lithander demonstrated his <a href="http://blog.pixelpracht.net/?p=59">Flash TMX parser combined with Flixel rendering</a></li>
 </ul>
-<h3 id="game-maker">Game Maker</h3>
+<h3 id="game-maker">Game Maker<a class="headerlink" href="#game-maker" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="http://gmc.yoyogames.com/index.php?showtopic=539494">Tiled2GM Converter</a> by Dmi7ry</li>
 </ul>
-<h3 id="godot">Godot</h3>
+<h3 id="godot">Godot<a class="headerlink" href="#godot" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://godotengine.org/asset-library/asset/25">Tiled Map Importer</a> imports each map as Godot scene which can be instanced or inherited (<a href="http://discourse.mapeditor.org/t/importer-plugin-for-godot-engine/1833/1">forum announcement</a>)</li>
 </ul>
-<h3 id="haxe">Haxe</h3>
+<h3 id="haxe">Haxe<a class="headerlink" href="#haxe" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/HaxePunk/tiled">HaxePunk</a> Tiled Loader for HaxePunk</li>
 <li><a href="https://github.com/HaxeFlixel/flixel-addons/tree/dev/flixel/addons/editors/tiled">HaxeFlixel</a></li>
 <li><a href="https://github.com/Kasoki/openfl-tiled">OpenFL</a> "openfl-tiled" is a library, which gives OpenFL developers the ability to use the Tiled Map Editor.</li>
 <li><a href="https://github.com/kasoki/openfl-tiled-flixel">OpenFL + Tiled + Flixel</a> Experimental glue to use "openfl-tiled" with HaxeFlixel</li>
 </ul>
-<h3 id="html5-multiple-engines">HTML5 (multiple engines)</h3>
+<h3 id="html5-multiple-engines">HTML5 (multiple engines)<a class="headerlink" href="#html5-multiple-engines" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="http://canvasengine.net">Canvas Engine</a> A framework to create video games in HTML5 Canvas</li>
 <li><a href="https://github.com/funkaster/ChesterGL">chesterGL</a> A simple WebGL/canvas game library</li>
@@ -332,78 +308,78 @@ sections:</p>
 <li><a href="http://www.phaser.io">Phaser</a> A fast, free and fun open source framework supporting both JavaScript and TypeScript (<a href="http://www.gamedevacademy.org/html5-phaser-tutorial-top-down-games-with-tiled/">Tiled tutorial</a>)</li>
 <li><a href="https://github.com/linux-man/p5.tiledmap">linux-man/p5.tiledmap</a> adds Tiled maps to <a href="http://p5js.org/">p5.js</a>.</li>
 </ul>
-<h3 id="indielib-crossplatform">indielib-crossplatform</h3>
+<h3 id="indielib-crossplatform">indielib-crossplatform<a class="headerlink" href="#indielib-crossplatform" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="http://www.indielib.com">indielib cross-platform</a> supports loading TMX maps through the <a href="http://code.google.com/p/tmx-parser/">C++/TinyXML based tmx-parser</a> by KonoM (BSD)</li>
 </ul>
-<h3 id="libgdx">LibGDX</h3>
+<h3 id="libgdx">LibGDX<a class="headerlink" href="#libgdx" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="http://libgdx.badlogicgames.com/">libgdx</a>, a Java-based Android/desktop/HTML5 game library, <a href="https://github.com/libgdx/libgdx/wiki/Tile-maps">provides</a> a packer, loader and renderer for TMX maps</li>
 </ul>
-<h3 id="love">LÖVE</h3>
+<h3 id="love">LÖVE<a class="headerlink" href="#love" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/Karai17/Simple-Tiled-Implementation">Simple Tiled Implementation</a> Lua loader for the LÖVE (Love2d) game framework.</li>
 </ul>
-<h3 id="moai-sdk">MOAI SDK</h3>
+<h3 id="moai-sdk">MOAI SDK<a class="headerlink" href="#moai-sdk" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/makotok/Hanappe">Hanappe</a> Framework for MOAI SDK.</li>
 <li><a href="https://github.com/ymobe/rapanui">Rapanui</a> Framework for MOAI SDK.</li>
 </ul>
-<h3 id="monkey-x">Monkey X</h3>
+<h3 id="monkey-x">Monkey X<a class="headerlink" href="#monkey-x" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/bitJericho/bit.tiled">bit.tiled</a> Loads TMX file as objects. Aims to be fully compatible with native TMX files.</li>
 <li><a href="https://code.google.com/p/diddy/">Diddy</a> is an extensive framework for Monkey X that contains a module for loading and rendering TMX files.  Supports orthogonal and isometric maps as both CSV and Base64 (uncompressed).</li>
 </ul>
-<h3 id="nodejs">Node.js</h3>
+<h3 id="nodejs">Node.js<a class="headerlink" href="#nodejs" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/andrewrk/node-tmx-parser">node-tmx-parser</a> - loads the TMX file into a JavaScript object</li>
 </ul>
-<h3 id="orx-portable-game-engine">Orx Portable Game Engine</h3>
+<h3 id="orx-portable-game-engine">Orx Portable Game Engine<a class="headerlink" href="#orx-portable-game-engine" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="http://orx-project.org/wiki/tutorials/community/sausage/tmx_to_orx">TMX to ORX Converter</a> Tutorial and converter download for Orx.</li>
 </ul>
-<h3 id="pygame">Pygame</h3>
+<h3 id="pygame">Pygame<a class="headerlink" href="#pygame" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="http://www.pygame.org/project/1158/">Pygame map loader</a> by dr0id</li>
 <li><a href="https://github.com/bitcraft/PyTMX">PyTMX</a> by Leif Theden (bitcraft)</li>
 <li><a href="https://bitbucket.org/r1chardj0n3s/pygame-tutorial/src/a383dd24790d/tmx.py">tmx.py</a> by Richard Jones, from his <a href="http://pyvideo.org/video/615/introduction-to-game-development">2012 PyCon 'Introduction to Game Development' talk</a>.</li>
 <li><a href="https://github.com/renfredxh/tmx">TMX</a>, a fork of tmx.py and a port to Python3.  A demo called pylletTown can be found <a href="https://github.com/renfredxh/pylletTown">here</a>.</li>
 </ul>
-<h3 id="pyglet">Pyglet</h3>
+<h3 id="pyglet">Pyglet<a class="headerlink" href="#pyglet" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/reidrac/pyglet-tiled-json-map">JSON map loader/renderer for pyglet</a> by Juan J. Martínez (reidrac)</li>
 <li><a href="https://github.com/bitcraft/PyTMX">PyTMX</a> by Leif Theden (bitcraft)</li>
 </ul>
-<h3 id="pysdl2">PySDL2</h3>
+<h3 id="pysdl2">PySDL2<a class="headerlink" href="#pysdl2" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/bitcraft/PyTMX">PyTMX</a> by Leif Theden (bitcraft)</li>
 </ul>
-<h3 id="sdl">SDL</h3>
+<h3 id="sdl">SDL<a class="headerlink" href="#sdl" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="http://usefulgamedev.weebly.com/c-tiled-map-loader.html">C++/TinyXML/SDL based loader</a> example by Rohin Knight (limited functionality)</li>
 </ul>
-<h3 id="sfml">SFML</h3>
+<h3 id="sfml">SFML<a class="headerlink" href="#sfml" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/edoren/STP">STP</a> (SFML TMX Parser) by edoren</li>
 <li><a href="http://trederia.blogspot.co.uk/2013/05/tiled-map-loader-for-sfml.html">C++/SFML Tiled map loader</a> by fallahn. (Zlib/libpng)</li>
 <li><a href="https://github.com/Tresky/sf_tile_engine">C++/SfTileEngine</a> by Tresky (currently limited functionality)</li>
 </ul>
-<h3 id="slick2d">Slick2D</h3>
+<h3 id="slick2d">Slick2D<a class="headerlink" href="#slick2d" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="http://slick.ninjacave.com">Slick2D</a> supports loading TMX maps through <a href="http://slick.ninjacave.com/javadoc/org/newdawn/slick/tiled/TiledMap.html">TiledMap</a>.</li>
 </ul>
-<h3 id="sprite-kit-framework">Sprite Kit Framework</h3>
+<h3 id="sprite-kit-framework">Sprite Kit Framework<a class="headerlink" href="#sprite-kit-framework" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/TomLinthwaite/SKTilemap">SKTilemap</a> is built from the ground up in Swift. It's up to date, full of features and easy to integrate into any Sprite Kit project. Supports iOS and OSX.</li>
 <li><a href="https://github.com/mfessenden/SKTiled">SKTiled</a> - A Swift framework for working with Tiled assets in SpriteKit.</li>
 <li><a href="http://tilemapkit.com">TilemapKit</a> is a tilemapping framework for Sprite Kit. It supports all TMX tilemap types, including staggered iso and all hex variations. No longer in development.</li>
 <li><a href="https://github.com/slycrel/JSTileMap">JSTileMap</a> is a lightweight SpriteKit implementation of the TMX format supporting iOS 7 and OS X 10.9 and above.</li>
 </ul>
-<h3 id="terra-engine-delphipascal">TERRA Engine (Delphi/Pascal)</h3>
+<h3 id="terra-engine-delphipascal">TERRA Engine (Delphi/Pascal)<a class="headerlink" href="#terra-engine-delphipascal" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="http://pascalgameengine.com/">TERRA Engine</a> supports loading and rendering of TMX maps.</li>
 </ul>
-<h3 id="unity-3d">Unity 3D</h3>
+<h3 id="unity-3d">Unity 3D<a class="headerlink" href="#unity-3d" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="http://www.wyrmtale.com/products/unity3d-components/orthello-pro">Orthello Pro</a> (2D framework) offers <a href="http://www.wyrmtale.com/orthello-pro/tilemaps">Tiled map support</a>.</li>
 <li><a href="http://karnakgames.com/wp/unity-tiled-tilemaps/">Tiled Tilemaps</a> library by Karnak Games adds support for Orthogonal TMX maps to Unity, with automatic collision detection.</li>
@@ -412,32 +388,63 @@ sections:</p>
 <li><a href="https://bitbucket.org/PolCPP/unitmx/overview">UniTMX</a> imports TMX files into a mesh.</li>
 <li><a href="https://bitbucket.org/Chaoseiro/x-unitmx">X-UniTMX</a> supports almost all Tiled 0.10 features. Imports TMX/XML files into Sprite Objects or Meshes.</li>
 </ul>
-<h3 id="unreal-engine-4">Unreal Engine 4</h3>
+<h3 id="unreal-engine-4">Unreal Engine 4<a class="headerlink" href="#unreal-engine-4" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://forums.unrealengine.com/showthread.php?3539-Project-Paper2D">Paper2D</a> provides built-in support for tile maps and tile sets, importing JSON exported from Tiled.</li>
 </ul>
-<h3 id="urho3d">Urho3D</h3>
+<h3 id="urho3d">Urho3D<a class="headerlink" href="#urho3d" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="http://urho3d.github.io/">Urho3D</a> natively supports loading Tiled maps as part of the <a href="http://urho3d.github.io/documentation/1.4/_urho2_d.html">Urho2D</a> sublibrary (<a href="http://urho3d.github.io/documentation/1.4/class_urho3_d_1_1_tile_map2_d.html">Documentation</a>, <a href="http://urho3d.github.io/samples/36_Urho2DTileMap.html">HTML5 example</a>).</li>
 </ul>
-<h3 id="xna">XNA</h3>
+<h3 id="xna">XNA<a class="headerlink" href="#xna" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="http://www.flatredball.com/frb/docs/index.php?title=Kain%27s_Tavern#Tiled_Map_Editor.2C_TMX.2C_Glue_and_you.">FlatRedBall Engine TMXGlue tool</a> by Domenic Datti loads TMX maps into the FlatRedBall engine, complete with node networks, pathfinding, and shapecollection support via object layers.</li>
 <li><a href="http://tiledmax.xpod.be/">TiledMax</a> by Aimee Bailey, a .NET library for parsing TMX maps without dependencies on Windows or XNA</li>
 <li><a href="https://bitbucket.org/vinull/xtiled">XTiled</a> by Michael C. Neel and Dylan Wolf, XNA library for loading and rendering TMX maps</li>
 <li><a href="https://github.com/zachmu/tiled-xna">XNA map loader</a> by Kevin Gadd, extended by Stephen Belanger and Zach Musgrave</li>
-</ul></div>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../tmx-changelog/" class="btn btn-neutral" title="TMX Changelog"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
         </div>
+      </div>
 
-        <footer class="col-md-12">
-            <hr>
-            
-            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
-        </footer>
+    </section>
+    
+  </div>
 
-        <script src="../../js/jquery-1.10.2.min.js"></script>
-        <script src="../../js/bootstrap-3.0.3.min.js"></script>
-        <script src="../../js/highlight.pack.js"></script>
-        <script src="../../js/base.js"></script>
-    </body>
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/bjorn/tiled" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../tmx-changelog/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script src="../../js/theme.js"></script>
+
+</body>
 </html>

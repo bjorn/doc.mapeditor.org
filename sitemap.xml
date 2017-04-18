@@ -3,8 +3,8 @@
 
     
     <url>
-     <loc>None/</loc>
-     <lastmod>2016-12-13</lastmod>
+     <loc>/</loc>
+     <lastmod>2017-04-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,32 +12,32 @@
     
         
     <url>
-     <loc>None/manual/</loc>
-     <lastmod>2016-12-13</lastmod>
+     <loc>/manual/</loc>
+     <lastmod>2017-04-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/manual/introduction/</loc>
-     <lastmod>2016-12-13</lastmod>
+     <loc>/manual/introduction/</loc>
+     <lastmod>2017-04-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/manual/custom-properties/</loc>
-     <lastmod>2016-12-13</lastmod>
+     <loc>/manual/custom-properties/</loc>
+     <lastmod>2017-04-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/manual/using-the-terrain-tool/</loc>
-     <lastmod>2016-12-13</lastmod>
+     <loc>/manual/using-the-terrain-tool/</loc>
+     <lastmod>2017-04-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/manual/using-commands/</loc>
-     <lastmod>2016-12-13</lastmod>
+     <loc>/manual/using-commands/</loc>
+     <lastmod>2017-04-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -46,20 +46,20 @@
     
         
     <url>
-     <loc>None/reference/tmx-map-format/</loc>
-     <lastmod>2016-12-13</lastmod>
+     <loc>/reference/tmx-map-format/</loc>
+     <lastmod>2017-04-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/reference/tmx-changelog/</loc>
-     <lastmod>2016-12-13</lastmod>
+     <loc>/reference/tmx-changelog/</loc>
+     <lastmod>2017-04-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/reference/support-for-tmx-maps/</loc>
-     <lastmod>2016-12-13</lastmod>
+     <loc>/reference/support-for-tmx-maps/</loc>
+     <lastmod>2017-04-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         

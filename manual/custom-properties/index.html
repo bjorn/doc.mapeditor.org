@@ -1,199 +1,176 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../http://blog.mapeditor.org/favicon.ico">
+  
+  <title>Custom Properties - Tiled Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Custom Properties";
+    var mkdocs_page_input_path = "manual/custom-properties.md";
+    var mkdocs_page_url = "/manual/custom-properties/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-380618-1', 'mapeditor.org');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Tiled Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Manual</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../">Contents</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../introduction/">Introduction</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Custom Properties</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#custom-properties">Custom Properties</a></li>
+    
+        <ul>
         
+            <li><a class="toctree-l4" href="#overview">Overview</a></li>
         
+            <li><a class="toctree-l4" href="#adding-properties">Adding Properties</a></li>
         
-        <link rel="shortcut icon" href="../../http:/blog.mapeditor.org/favicon.ico">
+            <li><a class="toctree-l4" href="#tile-property-inheritance">Tile Property Inheritance</a></li>
         
-
-	<title>Custom Properties - Tiled</title>
-
-        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
-        <link rel="stylesheet" href="../../css/highlight.css">
-        <link href="../../css/base.css" rel="stylesheet">
-        <link href="../../css/extra.css" rel="stylesheet">
-
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-
+            <li><a class="toctree-l4" href="#predefining-properties">Predefining Properties</a></li>
         
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-            ga('create', 'UA-380618-1', 'mapeditor.org');
-            ga('send', 'pageview');
-        </script>
+            <li><a class="toctree-l4" href="#future-extensions">Future Extensions</a></li>
         
-
-        <script>
-function OnScroll() {
-    if ('pageYOffset' in window) {  // all browsers, except IE before version 9
-        var scrollTop = window.pageYOffset;
-        var header = document.getElementById("mkdocsheader");
-        var classList = header.classList;
-        if (scrollTop > 40 && !classList.contains("navbar-fixed-top")) {
-            classList.add("navbar-fixed-top");
-        } else if (scrollTop < 40 && classList.contains("navbar-fixed-top")) {
-            classList.remove("navbar-fixed-top");
-        }
-    }
-}
-        </script>
-    </head>
-
-    <body onscroll="OnScroll()">
-
-    <!-- Global navigation bar -->
-    <div id="top-navbar-container">
-        <ul id="top-navbar" class="wrap container">
-            <li><a href="http://www.mapeditor.org/"><i class="fa fa-home"></i> Home</a></li>
-            <li><a href="http://discourse.mapeditor.org/"><i class="fa fa-group"></i> Forum</a></li>
-            <li class="active"><a href="http://doc.mapeditor.org/"><i class="fa fa-book"></i> Documentation</a></li>
         </ul>
-    </div>
-
-        <div id="mkdocsheaderwrapper" style="height: 52px;">
-<div id="mkdocsheader" class="navbar navbar-default" role="navigation">
-
-    <div class="container">
-
-        <!-- Collapsed navigation -->
-        <div class="navbar-header">
-            <!-- Expander button -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-            <!-- Main title -->
-            <a class="navbar-brand" href="../..">Tiled</a>
-        </div>
-
-        <!-- Expanded navigation -->
-        <div class="navbar-collapse collapse">
-            <!-- Main navigation -->
-            <ul class="nav navbar-nav">
-            
-            
-                <li >
-                    <a href="../..">Index</a>
-                </li>
-            
-            
-            
-                <li class="dropdown active">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manual <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                    
-                        <li >
-                            <a href="../">Contents</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../introduction/">Introduction</a>
-                        </li>
-                    
-                        <li class="active">
-                            <a href="./">Custom Properties</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../using-the-terrain-tool/">Using the Terrain Tool</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../using-commands/">Using Commands</a>
-                        </li>
-                    
-                    </ul>
-                </li>
-            
-            
-            
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                    
-                        <li >
-                            <a href="../../reference/tmx-map-format/">TMX Map Format</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../reference/tmx-changelog/">TMX Changelog</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../reference/support-for-tmx-maps/">Libraries and Frameworks</a>
-                        </li>
-                    
-                    </ul>
-                </li>
-            
-            
-            </ul>
-
-            <!-- Search, Navigation and Repo links -->
-            <ul class="nav navbar-nav navbar-right">
-                <li >
-                    <a rel="next" href="../introduction/">
-                        <i class="fa fa-arrow-left"></i> Previous
-                    </a>
-                </li>
-                <li >
-                    <a rel="prev" href="../using-the-terrain-tool/">
-                        Next <i class="fa fa-arrow-right"></i>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="https://github.com/bjorn/tiled">
-                        
-                            <i class="fa fa-github"></i>
-                        
-                        GitHub
-                    </a>
-                </li>
-                
-            </ul>
-        </div>
-    </div>
-</div>
-</div>
-
-        <div class="container">
-            <div class="col-md-3"><div id="mkdocstoc" class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#custom-properties">Custom Properties</a></li>
-        
-            <li><a href="#overview">Overview</a></li>
-        
-            <li><a href="#adding-properties">Adding Properties</a></li>
-        
-            <li><a href="#predefining-properties">Predefining Properties</a></li>
-        
-            <li><a href="#future-extensions">Future Extensions</a></li>
-        
-    
+
     </ul>
-</div></div>
-            <div class="col-md-9" role="main">
+                </li>
+                <li class="">
+                    
+    <a class="" href="../using-the-terrain-tool/">Using the Terrain Tool</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../using-commands/">Using Commands</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Reference</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../reference/tmx-map-format/">TMX Map Format</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../reference/tmx-changelog/">TMX Changelog</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../reference/support-for-tmx-maps/">Libraries and Frameworks</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
 
-<h2 id="custom-properties">Custom Properties</h2>
-<h3 id="overview">Overview</h3>
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Tiled Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Manual &raquo;</li>
+        
+      
+    
+    <li>Custom Properties</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/bjorn/tiled/edit/master/docs/manual/custom-properties.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="custom-properties">Custom Properties<a class="headerlink" href="#custom-properties" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>One of the major strengths of Tiled is that it allows setting custom properties
 on all of its basic data structures. This way it is possible to include many
 forms of custom information, which can later be used by your game or by the
@@ -203,21 +180,33 @@ context-sensitive, usually displaying the properties of the last selected
 object. For tiles in a tileset or objects on an object layer, it also supports
 multi-selection.</p>
 <p><img alt="Properties View" src="../images/properties/properties-dock.png" /></p>
-<h3 id="adding-properties">Adding Properties</h3>
+<h2 id="adding-properties">Adding Properties<a class="headerlink" href="#adding-properties" title="Permanent link">&para;</a></h2>
 <p>When you add a property (using the '+' button at the bottom of the Properties
 view), you are prompted for its name and its type. Currently Tiled supports the
 following basic property types:</p>
 <ul>
-<li><strong>string</strong> (any text)</li>
+<li><strong>string</strong> (any text, including multi-line text)</li>
 <li><strong>float</strong> (a floating point number)</li>
 <li><strong>int</strong> (a whole number)</li>
 <li><strong>bool</strong> (true or false)</li>
+<li><strong>file</strong> (a relative path referencing a file)</li>
+<li><strong>color</strong> (a 32-bit color value)</li>
 </ul>
 <p><img alt="Add Property Dialog" src="../images/properties/add-property.png" /></p>
 <p>The property type is used to choose a custom editor in the Properties view.
 Choosing a number or boolean type also avoids that the value will get quoted in
 JSON and Lua exports.</p>
-<h3 id="predefining-properties">Predefining Properties</h3>
+<div class="new">New in Tiled 1.0</div>
+
+<h2 id="tile-property-inheritance">Tile Property Inheritance<a class="headerlink" href="#tile-property-inheritance" title="Permanent link">&para;</a></h2>
+<p>When custom properties are added to a tile, these properties will also be
+visible when an object instance of that tile is selected. This enables easy
+per-object overriding of certain default properties associated with a tile.
+This becomes especially useful when combined with <a href="#typed-tiles">typed tiles</a>.</p>
+<p>Inherited properties will be displayed in gray (disabled text color), whereas
+overridden properties will be displayed in black (usual text color).</p>
+<h2 id="predefining-properties">Predefining Properties<a class="headerlink" href="#predefining-properties" title="Permanent link">&para;</a></h2>
+<h3 id="general-setup">General Setup<a class="headerlink" href="#general-setup" title="Permanent link">&para;</a></h3>
 <p>Usually you only use a limited set of object types in your game, and each type
 of object has a fixed set of possible properties, with specific types and
 default values. To save you time, Tiled allows predefining these properties
@@ -235,47 +224,95 @@ name.</p>
 <p>To make the predefined properties show up in the Properties view, all you need
 to do is to enter the name of the type in the built-in "Type" property. Usually
 this is what you're doing already anyway to tell your engine what kind of object
-it is dealing with.
+it is dealing with.</p>
+<div class="new">New in Tiled 1.0</div>
+
+<h3 id="typed-tiles">Typed Tiles<a class="headerlink" href="#typed-tiles" title="Permanent link">&para;</a></h3>
+<p>If you're using tile objects, you can set the type on the tile to avoid having
+to set it on each object instance. Setting the type on the tile makes the
+predefined properties visible when having the tile selected, allowing to
+override the values. It also makes those possibly overriden values visible when
+having a tile object instance selected, again allowing you to override them.</p>
+<p>An example use-case for this would be to define custom types like "NPC",
+"Enemy" or "Item" with properties like "name", "health" or "weight". You can
+then specify values for these on the tiles representing these entities. And
+when placing those tiles as objects, you can override those values if you need
+to.
 <div class="future"></p>
-<h3 id="future-extensions">Future Extensions</h3>
+<h2 id="future-extensions">Future Extensions<a class="headerlink" href="#future-extensions" title="Permanent link">&para;</a></h2>
 <p>There are several types of custom properties I'd like to add:</p>
 <ul>
-<li><strong>File references</strong>, which would feature a button to easily choose a file.</li>
 <li><strong>Enumerations</strong>, where you can predefine all possible values and it forms a
   combo box (<a href="https://github.com/bjorn/tiled/issues/1211">#1211</a>).</li>
 <li><strong>Object references</strong>, which would allow easily linking objects together and
   Tiled could display such connections
   (<a href="https://github.com/bjorn/tiled/issues/707">#707</a>).</li>
+<li><strong>Array properties</strong>, which would be properties having a list of values
+  (<a href="https://github.com/bjorn/tiled/issues/1493">#1493</a>).</li>
 <li><strong>Dictionary properties</strong>, which would be properties that can contain any
   number of other properties as children
   (<a href="https://github.com/bjorn/tiled/issues/489">#489</a>).</li>
 </ul>
-<p>I'd also like to add <strong>multi-line editing</strong> of string properties
-(<a href="https://github.com/bjorn/tiled/issues/205">#205</a>). And it would be nice to add
-support for <strong>limiting property values</strong>, like length of string properties or a
-minimum/maximum on number values.</p>
+<p>It would also be nice to add support for <strong>limiting property values</strong>, like
+the length of string properties or a minimum/maximum on number values.</p>
 <p>Apart from predefining properties based on object type, I'd like to add support
 for <strong>predefining the properties for each data type</strong>. So defining which custom
-properties are valid for maps, tilesets, layers, etc.</p>
+properties are valid for maps, tilesets, layers, etc.
+(<a href="https://github.com/bjorn/tiled/issues/1410">#1410</a>)</p>
 <p>Finally, the predefined properties would work very well together with explicit
 <strong>support for projects</strong>. Then you could switch between different projects or
 get started on an existing project, without needing to configure Tiled to use
 the right object type definitions.</p>
 <p>If you like any of these plans, please help me getting around to it faster by
-<a href="https://www.patreon.com/bjorn?ty=h">becoming a patron</a>. The more support I
+<a href="https://www.patreon.com/bjorn">becoming a patron</a>. The more support I
 receive the more time I can afford to spend improving Tiled!
-</div></p></div>
+</div></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../using-the-terrain-tool/" class="btn btn-neutral float-right" title="Using the Terrain Tool">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../introduction/" class="btn btn-neutral" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
         </div>
+      </div>
 
-        <footer class="col-md-12">
-            <hr>
-            
-            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
-        </footer>
+    </section>
+    
+  </div>
 
-        <script src="../../js/jquery-1.10.2.min.js"></script>
-        <script src="../../js/bootstrap-3.0.3.min.js"></script>
-        <script src="../../js/highlight.pack.js"></script>
-        <script src="../../js/base.js"></script>
-    </body>
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/bjorn/tiled" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../introduction/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../using-the-terrain-tool/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../../js/theme.js"></script>
+
+</body>
 </html>
