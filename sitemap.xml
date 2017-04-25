@@ -30,6 +30,12 @@
     </url>
         
     <url>
+     <loc>/manual/objects/</loc>
+     <lastmod>2017-04-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>/manual/custom-properties/</loc>
      <lastmod>2017-04-25</lastmod>
      <changefreq>daily</changefreq>

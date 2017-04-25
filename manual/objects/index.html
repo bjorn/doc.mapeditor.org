@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../http://blog.mapeditor.org/favicon.ico">
+  
+  <title>Working with Objects - Tiled Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Working with Objects";
+    var mkdocs_page_input_path = "manual/objects.md";
+    var mkdocs_page_url = "/manual/objects/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-380618-1', 'mapeditor.org');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Tiled Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Manual</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../layers/">Working with Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../editing-tile-layers/">Editing Tile Layers</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Working with Objects</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#working-with-objects">Working with Objects</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#placement-tools">Placement Tools</a></li>
+        
+            <li><a class="toctree-l4" href="#select-objects">Select Objects</a></li>
+        
+            <li><a class="toctree-l4" href="#edit-polygons">Edit Polygons</a></li>
+        
+            <li><a class="toctree-l4" href="#future-extensions">Future Extensions</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../custom-properties/">Custom Properties</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../using-the-terrain-tool/">Using the Terrain Tool</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../using-commands/">Using Commands</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keyboard-shortcuts/">Keyboard Shortcuts</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Reference</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../reference/tmx-map-format/">TMX Map Format</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../reference/tmx-changelog/">TMX Changelog</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../reference/support-for-tmx-maps/">Libraries and Frameworks</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Tiled Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Manual &raquo;</li>
+        
+      
+    
+    <li>Working with Objects</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/bjorn/tiled/edit/master/docs/manual/objects.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="working-with-objects">Working with Objects<a class="headerlink" href="#working-with-objects" title="Permanent link">&para;</a></h1>
+<p>Using objects you can add a great deal of information to your map for use in
+your game. They can replace tedious alternatives like hardcoding coordinates
+(like spawn points) in your source code or maintaining additional data files for
+storing gameplay elements. With the addition of <em>tile objects</em>, they also became
+useful for graphical purposes and can in some cases replace tile layers
+entirely, as demonstrated by the "Sticker Knight" example shipping with Tiled.</p>
+<p>To start using objects, add an <a href="../layers/#object-layers">Object Layer</a> to your map.</p>
+<h2 id="placement-tools">Placement Tools<a class="headerlink" href="#placement-tools" title="Permanent link">&para;</a></h2>
+<p>Each type of object has its own placement tool.</p>
+<h3 id="insert-rectangle">Insert Rectangle<a class="headerlink" href="#insert-rectangle" title="Permanent link">&para;</a></h3>
+<p>Shortcut: <code>R</code></p>
+<p>The rectangle was the first type of object supported by Tiled, which is why
+objects are rectangles by default in the
+<a href="../../reference/tmx-map-format/">TMX map format</a>. They are useful for marking
+rectangular areas and assigning custom properties to them. They are also often
+used for specifying collision boxes.</p>
+<p>Place a rectangle by clicking-and-dragging in any direction. Holding <code>Shift</code>
+makes it square and holding <code>Ctrl</code> snaps its size to the tile size.</p>
+<p>If the rectangle is empty (width and height are both 0), it is rendered as a
+small square around its position. This is mainly to keep it visible and
+selectable. Empty rectangles can be used for placing point objects, at least as
+long as no explicit support for point objects is available
+(<a href="https://github.com/bjorn/tiled/issues/1325">#1325</a>).</p>
+<h3 id="insert-ellipse">Insert Ellipse<a class="headerlink" href="#insert-ellipse" title="Permanent link">&para;</a></h3>
+<p>Shortcut: <code>C</code></p>
+<p>Ellipses work the same way as <a href="#insert-rectangle">rectangles</a>, except that they
+are rendered as an ellipse. Useful for when your area or collision shape needs
+to represent a circle or ellipse.</p>
+<h3 id="insert-polygon">Insert Polygon<a class="headerlink" href="#insert-polygon" title="Permanent link">&para;</a></h3>
+<p>Shortcut: <code>P</code></p>
+<p>Polygons are the most flexible way of defining the shape of an area. They are
+most commonly used for defining collision shapes.</p>
+<p>When placing a polygon, the first click determines the location of the object as
+well as the location of the first point of the polygon. Subsequent clicks are
+used to add additional points to the polygon. Right click or press <code>Enter</code> to
+finish creating the polygon. Polygons needs to have at least three points. You
+can press <code>Escape</code> to cancel the creation of the polygon.</p>
+<p>When you want to change a polygon after it has been placed, you need to use the
+<a href="#edit-polygons">Edit Polygons</a> tool.</p>
+<h3 id="insert-polyline">Insert Polyline<a class="headerlink" href="#insert-polyline" title="Permanent link">&para;</a></h3>
+<p>Shortcut: <code>L</code></p>
+<p>Polylines work very similar to <a href="#insert-polygon">polygons</a>, except that they are
+rendered as a line and require only two points. While they can represent
+collision walls, they are also often used to represent paths to be followed.</p>
+<p>Despite its name, the <a href="#edit-polygons">Edit Polygons</a> tool is also used to edit
+polylines.</p>
+<h3 id="insert-tile">Insert Tile<a class="headerlink" href="#insert-tile" title="Permanent link">&para;</a></h3>
+<p>Shortcut: <code>T</code></p>
+<p>Tiles can be inserted as objects to have full flexibility in placing, scaling
+and rotating the tile image on your map. Like all objects, tile objects can also
+have custom properties associated with them. This makes them useful for
+placement of recognizable interactive objects that need special information,
+like a chest with defined contents or an NPC with defined script.</p>
+<p>To place a tile object, first select the tile you want to place in the Tilesets
+view. Then use the Left mouse button on the map to start placing the object,
+move to position it based on the preview and release to finish placing the
+object.</p>
+<div class="new">New in Tiled 1.0</div>
+
+<p>To change the tile used by existing tile objects, select all the objects you
+want to change using the <a href="#select-objects">Select Objects</a> tool and then
+right-click on a tile in the Tilesets view, and choose <em>Replace Tile of Selected
+Objects</em>.</p>
+<div class="new">New in Tiled 1.0</div>
+
+<h3 id="insert-text">Insert Text<a class="headerlink" href="#insert-text" title="Permanent link">&para;</a></h3>
+<p>Shortcut: <code>X</code></p>
+<p>Text objects can be used to add arbitrary multi-line text to your maps. You can
+configure various font properties and the wrapping / clipping area, making them
+useful for both quick notes as well as text used in the game.</p>
+<h2 id="select-objects">Select Objects<a class="headerlink" href="#select-objects" title="Permanent link">&para;</a></h2>
+<p>Shortcut: <code>S</code></p>
+<p>When you're not inserting new objects, you're generally using the Select Objects
+tool. It packs a lot of functionality, which is outlined below.</p>
+<h3 id="selecting-and-deselecting">Selecting and Deselecting<a class="headerlink" href="#selecting-and-deselecting" title="Permanent link">&para;</a></h3>
+<p>You can select objects by clicking them or by dragging a rectangular lasso,
+selecting any object that intersect with its area. By holding <code>Shift</code> or <code>Ctrl</code>
+while clicking, you can add/remove single objects to/from the selection.</p>
+<p>When pressing and dragging on an object, this object is selected and moved. When
+this prevents you from starting a rectangular selection, you can hold <code>Shift</code> to
+force the selection rectangle.</p>
+<div class="new">New in Tiled 1.0</div>
+
+<p>By default you interact with the top-most object. When you need to select an
+object below another object, first select the higher object and then hold <code>Alt</code>
+while clicking at the same location to select lower objects. You can also hold
+<code>Alt</code> while opening the context menu to get a list of all objects at the clicked
+location, so you may directly select the desired object.</p>
+<h3 id="moving">Moving<a class="headerlink" href="#moving" title="Permanent link">&para;</a></h3>
+<p>You can simply drag any single object, or drag already selected objects by
+dragging any one of them. Hold <code>Ctrl</code> to toggle snapping to the tile grid.</p>
+<p>Hold <code>Alt</code> to force a move operation on the currently selected objects,
+regardless of where you click on the map. This is useful when the selected
+objects are small or covered by other objects.</p>
+<p>The selected objects can also be moved with the arrow keys. By default this
+moves the objects pixel by pixel. Hold <code>Shift</code> while using the arrow keys to
+move the objects by distance of one tile.</p>
+<h3 id="resizing">Resizing<a class="headerlink" href="#resizing" title="Permanent link">&para;</a></h3>
+<p>You can use the resize handles to resize one or more selected objects. Hold
+<code>Ctrl</code> to keep the aspect ratio of the object and/or <code>Shift</code> to place the resize
+origin in the center.</p>
+<p>Note that you can only change width and height independently when resizing a
+single object. When having multiple objects selected, the aspect ratio is
+constant because there would be no way to make that work for rotated objects
+without full support for transformations.</p>
+<h3 id="rotating">Rotating<a class="headerlink" href="#rotating" title="Permanent link">&para;</a></h3>
+<p>To rotate, click any selected object to change the resize handles into rotation
+handles. Before rotating, you can drag the rotation origin to another position
+if necessary. Hold <code>Shift</code> to rotate in 15-degree increments. Click any selected
+object again to go back to resize mode.</p>
+<p>You can also rotate the selected objects in 90-degree steps by pressing <code>Z</code> or
+<code>Shift + Z</code>.</p>
+<h3 id="changing-stacking-order">Changing Stacking Order<a class="headerlink" href="#changing-stacking-order" title="Permanent link">&para;</a></h3>
+<p>If the active <a href="../layers/#object-layer">Object Layer</a> has its Drawing Order
+property set to Manual (the default is Top Down), you can control the stacking
+order of the selected objects within their object layer using the following
+keys:</p>
+<ul>
+<li><code>PgUp</code> - Raise selected objects</li>
+<li><code>PgDown</code> - Lower selected objects</li>
+<li><code>Home</code> - Move selected objects to Top</li>
+<li><code>End</code> - Move selected objects to Bottom</li>
+</ul>
+<p>You can also find these actions in the context menu. When you have multiple
+Object Layers, the context menu also contains actions to move the selected
+objects to another layer.</p>
+<h3 id="flipping-objects">Flipping Objects<a class="headerlink" href="#flipping-objects" title="Permanent link">&para;</a></h3>
+<p>You can flip the selected objects horizontally by pressing <code>X</code> or vertically by
+pressing <code>Y</code>. For tile objects, this also flips their images.</p>
+<h2 id="edit-polygons">Edit Polygons<a class="headerlink" href="#edit-polygons" title="Permanent link">&para;</a></h2>
+<p>Shortcut: <code>E</code></p>
+<p>Polygons and polylines have their own editing needs and as such are covered by a
+separate tool, which allows selecting and moving around their nodes. You can
+select and move the nodes of multiple polygons at the same time.</p>
+<p>Nodes can be deleted by selecting them and choosing "Delete Nodes" from the
+context menu. Careful with the <code>Delete</code> key, because that will delete the entire
+polygon (<a href="https://github.com/bjorn/tiled/issues/1555">#1555</a>).</p>
+<p>When you have selected multiple consecutive nodes of the same polygon, you can
+join them together by choosing "Join Nodes" from the context menu. You can also
+split the segments in between the nodes by choosing "Split Segments", which is
+currently the only way to extend an existing polygon.
+<div class="future"></p>
+<h2 id="future-extensions">Future Extensions<a class="headerlink" href="#future-extensions" title="Permanent link">&para;</a></h2>
+<p>Here are some ideas about improvements that could be made to the above tools:</p>
+<ul>
+<li>
+<p>For the <a href="#insert-tile">Insert Tile</a> tool, show the preview already before
+  pressing the left mouse button
+  (<a href="https://github.com/bjorn/tiled/issues/537">#537</a>)</p>
+</li>
+<li>
+<p>Many improvements could be made to the support for editing polygons and
+  polylines, like allowing to rotate and scale the selected nodes
+  (<a href="https://github.com/bjorn/tiled/issues/1487">#1487</a>).</p>
+</li>
+</ul>
+<p>If you like any of these plans, please help me getting around to it faster by
+<a href="https://www.patreon.com/bjorn">becoming a patron</a>. The more support I
+receive the more time I can afford to spend improving Tiled!
+</div></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../custom-properties/" class="btn btn-neutral float-right" title="Custom Properties">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../editing-tile-layers/" class="btn btn-neutral" title="Editing Tile Layers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/bjorn/tiled" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../editing-tile-layers/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../custom-properties/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../../js/theme.js"></script>
+
+</body>
+</html>
