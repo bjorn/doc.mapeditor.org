@@ -70,10 +70,6 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../">Contents</a>
-                </li>
-                <li class="">
-                    
     <a class="" href="../introduction/">Introduction</a>
                 </li>
                 <li class=" current">
@@ -99,6 +95,10 @@
     
 
     </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../editing-tile-layers/">Editing Tile Layers</a>
                 </li>
                 <li class="">
                     
@@ -182,17 +182,23 @@
 into various different layers. The most common layers are the
 <a href="#tile-layers">Tile Layer</a> and the <a href="#object-layers">Object Layer</a>. There is
 also an <a href="#image-layers">Image Layer</a> for including simple foreground or
-background graphics.</p>
+background graphics. The order of the layers determines the rendering order of
+your content.</p>
+<p>Layers can be hidden or made only partially visible. Layers also have an offset,
+which can be used to position them independently of each other, for example to
+fake depth.</p>
 <p>You use <a href="#group-layers">Group Layers</a> to organize the layers into a hierarchy.
 This makes it more comfortable to work with a large amount of layers.</p>
 <h2 id="tile-layers">Tile Layers<a class="headerlink" href="#tile-layers" title="Permanent link">&para;</a></h2>
 <p>Tile layers provide an efficient way of storing a large area filled with tile
-data. The data is an array of tile references and as such no additional
-information can be stored for each location.</p>
-<p>The only information stored in addition to the tile reference are some flags,
-that allow tile graphics to be flipped vertically, horizontally or anti-
-diagonally (to support rotation in 90-degree increments).</p>
-<p>Despite only being able to refer to tiles, tile layers can still be useful for
+data. The data is a simple array of tile references and as such no additional
+information can be stored for each location. The only extra information stored
+are a few flags, that allow tile graphics to be flipped vertically, horizontally
+or anti-diagonally (to support rotation in 90-degree increments).</p>
+<p>The information needed to render each tile layer is stored with the map, which
+specifies the position and rendering order of the tiles based on the orientation
+and various other properties.</p>
+<p>Despite only being able to refer to tiles, tile layers can also be useful for
 defining various bits of non-graphical information in your level. Collision
 information can often be conveyed using a special tileset, and any kind of
 object that does not need custom properties and is always aligned to the grid
@@ -209,7 +215,7 @@ of objects:</p>
   collision area)</li>
 <li><strong>Polyline</strong> - can be a path to follow or a wall to collide with</li>
 <li><strong>Tile</strong> - for freely placing, scaling and rotating your tile graphics</li>
-<li><strong>Text</strong> - for custom text or notes</li>
+<li><strong>Text</strong> - for custom text or notes (since Tiled 1.0)</li>
 </ul>
 <p>All objects can be named, in which case their name will show up in a label above
 them (by default only for selected objects). Objects can also be given a <em>type</em>,
@@ -217,6 +223,17 @@ which is useful since it can be used to customize the color of their label and
 the available <a href="../custom-properties/#predefining-properties">custom properties</a>
 for this object type. For tile objects, the type can be <a href="../custom-properties/#tile-property-inheritance">inherited from their
 tile</a>.</p>
+<p>For most map types, objects are positioned in plain pixels. The only exception
+to this are isometric maps (not isometric staggered). For isometric maps, it was
+deamed useful to store their positions in a projected coordinate space. For
+this, the isometric tiles are assumed to represent projected squares with both
+sides equal to the <em>tile height</em>. If you're using a different coordinate space
+for objects in your isometric game, you'll need to convert these coordinates
+accordingly.</p>
+<p>The object width and height is also mostly stored in pixels. For isometric maps,
+all shape objects (rectangle, ellipse, polygon and polyline) are projected into
+the same coordinate space described above. This is based on the assumption that
+these objects are generally used to mark areas on the map.</p>
 <h2 id="image-layers">Image Layers<a class="headerlink" href="#image-layers" title="Permanent link">&para;</a></h2>
 <p>Image layers provide a way to quickly include a single image as foreground or
 background of your map. They are currently not so useful, because if you instead
@@ -231,9 +248,9 @@ the lack of layer locking (<a href="https://github.com/bjorn/tiled/issues/734">#
 <p>Group layers work like folders and can be used for organizing the layers into a
 hierarchy. This is mainly useful when your map contains a large amount of
 layers.</p>
-<p>The visibility and opacity of a group layer affects all child layers. Layers can
-be easily dragged in and out of groups with the mouse. The Raise Layer / Lower
-Layer actions also allow moving layers in and out of groups.
+<p>The visibility, opacity and offset of a group layer affects all child layers.</p>
+<p>Layers can be easily dragged in and out of groups with the mouse. The Raise
+Layer / Lower Layer actions also allow moving layers in and out of groups.
 <div class="future"></p>
 <h2 id="future-extensions">Future Extensions<a class="headerlink" href="#future-extensions" title="Permanent link">&para;</a></h2>
 <p>There are many ways in which the layers can be made more powerful:</p>
@@ -258,7 +275,7 @@ receive the more time I can afford to spend improving Tiled!
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../custom-properties/" class="btn btn-neutral float-right" title="Custom Properties">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../editing-tile-layers/" class="btn btn-neutral float-right" title="Editing Tile Layers">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../introduction/" class="btn btn-neutral" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -292,7 +309,7 @@ receive the more time I can afford to spend improving Tiled!
         <span><a href="../introduction/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../custom-properties/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../editing-tile-layers/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
