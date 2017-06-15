@@ -126,6 +126,8 @@
         
             <li><a class="toctree-l4" href="#imagelayer">&lt;imagelayer&gt;</a></li>
         
+            <li><a class="toctree-l4" href="#group">&lt;group&gt;</a></li>
+        
             <li><a class="toctree-l4" href="#properties">&lt;properties&gt;</a></li>
         
         </ul>
@@ -184,6 +186,7 @@
             <div class="section">
               
                 <h1 id="tmx-map-format">TMX Map Format<a class="headerlink" href="#tmx-map-format" title="Permanent link">&para;</a></h1>
+<p><strong>Version 1.0</strong></p>
 <p>The TMX (Tile Map XML) map format used by <a href="http://www.mapeditor.org">Tiled</a> is a flexible way to describe a tile based map. It can describe maps with any tile size, any amount of layers, any number of tile sets and it allows custom properties to be set on most elements. Beside tile layers, it can also contain groups of objects that can be placed freely.</p>
 <p>Note that there are many <a href="../support-for-tmx-maps/">libraries and frameworks</a> available that can work with TMX maps.</p>
 <p>In this document we'll go through each element found in this map format. The elements are mentioned in the headers and the list of attributes of the elements are listed right below, followed by a short explanation. Attributes or elements that are deprecated or unsupported by the current version of Tiled are formatted in italics.</p>
@@ -191,7 +194,8 @@
 <p><em>A DTD-file (Document Type Definition) is served at <a href="http://mapeditor.org/dtd/1.0/map.dtd">http://mapeditor.org/dtd/1.0/map.dtd</a>. This file is not up-to-date but might be useful for XML-namespacing anyway.</em></p>
 <h2 id="map">&lt;map&gt;<a class="headerlink" href="#map" title="Permanent link">&para;</a></h2>
 <ul>
-<li><b>version:</b> The TMX format version, generally 1.0.</li>
+<li><b>version:</b> The TMX format version. Was "1.0" so far, and will be incremented to match minor Tiled releases.</li>
+<li><b>tiledversion:</b> The Tiled version used to save the file (since Tiled 1.0.1). May be a date (for snapshot builds).</li>
 <li><b>orientation:</b> Map orientation. Tiled supports "orthogonal", "isometric", "staggered" (since 0.9) and "hexagonal" (since 0.11).</li>
 <li><b>renderorder:</b> The order in which tiles on tile layers are rendered. Valid values are <code>right-down</code> (the default), <code>right-up</code>, <code>left-down</code> and <code>left-up</code>. In all cases, the map is drawn row-by-row. (since 0.10, but only supported for orthogonal maps at the moment)</li>
 <li><b>width:</b> The map width in tiles.</li>
@@ -206,7 +210,7 @@
 </ul>
 <p>The <code>tilewidth</code> and <code>tileheight</code> properties determine the general grid size of the map. The individual tiles may have different sizes. Larger tiles will extend at the top and right (anchored to the bottom left).</p>
 <p>A map contains three different kinds of layers. Tile layers were once the only type, and are simply called <code>layer</code>, object layers have the <code>objectgroup</code> tag and image layers use the <code>imagelayer</code> tag. The order in which these layers appear is the order in which the layers are rendered by Tiled.</p>
-<p>Can contain: <a href="#properties">properties</a>, <a href="#tileset">tileset</a>, <a href="#layer">layer</a>, <a href="#objectgroup">objectgroup</a>, <a href="#imagelayer">imagelayer</a></p>
+<p>Can contain: <a href="#properties">properties</a>, <a href="#tileset">tileset</a>, <a href="#layer">layer</a>, <a href="#objectgroup">objectgroup</a>, <a href="#imagelayer">imagelayer</a>, <a href="#group">group</a> (since 1.0)</p>
 <h2 id="tileset">&lt;tileset&gt;<a class="headerlink" href="#tileset" title="Permanent link">&para;</a></h2>
 <ul>
 <li><b>firstgid:</b> The first global tile ID of this tileset (this global ID maps to the first tile in this tileset).</li>
@@ -249,9 +253,10 @@
 <p>Can contain: <a href="#properties">properties</a></p>
 <h3 id="tile">&lt;tile&gt;<a class="headerlink" href="#tile" title="Permanent link">&para;</a></h3>
 <ul>
-<li><b>id:</b> The local tile ID within its tileset.</li>
-<li><b>terrain:</b> Defines the terrain type of each corner of the tile, given as comma-separated indexes in the terrain types array in the order top-left, top-right, bottom-left, bottom-right. Leaving out a value means that corner has no terrain. (optional) (since 0.9)</li>
-<li><b>probability:</b> A percentage indicating the probability that this tile is chosen when it competes with others while editing with the terrain tool. (optional) (since 0.9)</li>
+<li><strong>id:</strong> The local tile ID within its tileset.</li>
+<li><strong>type:</strong> The type of the tile. Refers to an object type and is used by tile objects. (optional) (since 1.0)</li>
+<li><strong>terrain:</strong> Defines the terrain type of each corner of the tile, given as comma-separated indexes in the terrain types array in the order top-left, top-right, bottom-left, bottom-right. Leaving out a value means that corner has no terrain. (optional) (since 0.9)</li>
+<li><strong>probability:</strong> A percentage indicating the probability that this tile is chosen when it competes with others while editing with the terrain tool. (optional) (since 0.9)</li>
 </ul>
 <p>Can contain: <a href="#properties">properties</a>, <a href="#image">image</a> (since 0.9), <a href="#objectgroup">objectgroup</a> (since 0.10), <a href="#animation">animation</a> (since 0.10)</p>
 <h4 id="animation">&lt;animation&gt;<a class="headerlink" href="#animation" title="Permanent link">&para;</a></h4>
@@ -375,7 +380,7 @@ for (int y = 0; y &lt; map_height; ++y) {
 <p>While tile layers are very suitable for anything repetitive aligned to the tile grid, sometimes you want to annotate your map with other information, not necessarily aligned to the grid. Hence the objects have their coordinates and size in pixels, but you can still easily align that to the grid when you want to.</p>
 <p>You generally use objects to add custom information to your tile map, such as spawn points, warps, exits, etc.</p>
 <p>When the object has a <code>gid</code> set, then it is represented by the image of the tile with that global ID. The image alignment currently depends on the map orientation. In orthogonal orientation it's aligned to the bottom-left while in isometric it's aligned to the bottom-center.</p>
-<p>Can contain: <a href="#properties">properties</a>, <a href="#ellipse">ellipse</a> (since 0.9), <a href="#polygon">polygon</a>, <a href="#polyline">polyline</a>, <i>image</i></p>
+<p>Can contain: <a href="#properties">properties</a>, <a href="#ellipse">ellipse</a> (since 0.9), <a href="#polygon">polygon</a>, <a href="#polyline">polyline</a>, <a href="#text">text</a> (since 1.0), <i>image</i></p>
 <h3 id="ellipse">&lt;ellipse&gt;<a class="headerlink" href="#ellipse" title="Permanent link">&para;</a></h3>
 <p>Used to mark an object as an ellipse. The existing <code>x</code>, <code>y</code>, <code>width</code> and <code>height</code> attributes are used to determine the size of the ellipse.</p>
 <h3 id="polygon">&lt;polygon&gt;<a class="headerlink" href="#polygon" title="Permanent link">&para;</a></h3>
@@ -388,6 +393,21 @@ for (int y = 0; y &lt; map_height; ++y) {
 <li><b>points:</b> A list of x,y coordinates in pixels.</li>
 </ul>
 <p>A <code>polyline</code> follows the same placement definition as a <code>polygon</code> object.</p>
+<h3 id="text">&lt;text&gt;<a class="headerlink" href="#text" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>fontfamily:</strong> The font family used (default: "sand-serif")</li>
+<li><strong>pixelsize:</strong> The size of the font in pixels (not using points, because other sizes in the TMX format are also using pixels) (default: 16)</li>
+<li><strong>wrap:</strong> Whether word wrapping is enabled (1) or disabled (0). Defaults to 0.</li>
+<li><strong>color:</strong> Color of the text in <code>#AARRGGBB</code> or <code>#RRGGBB</code> format (default: #000000)</li>
+<li><strong>bold:</strong> Whether the font is bold (1) or not (0). Defaults to 0.</li>
+<li><strong>italic:</strong> Whether the font is italic (1) or not (0). Defaults to 0.</li>
+<li><strong>underline:</strong> Whether a line should be drawn below the text (1) or not (0). Defaults to 0.</li>
+<li><strong>strikeout:</strong> Whether a line should be drawn through the text (1) or not (0). Defaults to 0.</li>
+<li><strong>kerning:</strong> Whether kerning should be used while rendering the text (1) or not (0). Default to 1.</li>
+<li><strong>halign:</strong> Horizontal alignment of the text within the object (<code>left</code> (default), <code>center</code> or <code>right</code>)</li>
+<li><strong>valign:</strong> Vertical alignment of the text within the object (<code>top</code> (default), <code>center</code> or <code>bottom</code>)</li>
+</ul>
+<p>Used to mark an object as a text object. Contains the actual text as character data.</p>
 <h2 id="imagelayer">&lt;imagelayer&gt;<a class="headerlink" href="#imagelayer" title="Permanent link">&para;</a></h2>
 <ul>
 <li><b>name:</b> The name of the image layer.</li>
@@ -395,16 +415,26 @@ for (int y = 0; y &lt; map_height; ++y) {
 <li><b>offsety:</b> Rendering offset of the image layer in pixels. Defaults to 0. (since 0.15)</li>
 <li><i>x:</i> The x position of the image layer in pixels. (deprecated since 0.15)</li>
 <li><i>y:</i> The y position of the image layer in pixels. (deprecated since 0.15)</li>
-<li><i>width:</i> The width of the image layer in tiles. Meaningless.</li>
-<li><i>height:</i> The height of the image layer in tiles. Meaningless.</li>
 <li><b>opacity:</b> The opacity of the layer as a value from 0 to 1. Defaults to 1.</li>
 <li><b>visible:</b> Whether the layer is shown (1) or hidden (0). Defaults to 1.</li>
 </ul>
 <p>A layer consisting of a single image.</p>
 <p>Can contain: <a href="#properties">properties</a>, <a href="#image">image</a></p>
+<h2 id="group">&lt;group&gt;<a class="headerlink" href="#group" title="Permanent link">&para;</a></h2>
+<ul>
+<li><b>name:</b> The name of the group layer.</li>
+<li><b>offsetx:</b> Rendering offset of the group layer in pixels. Defaults to 0.</li>
+<li><b>offsety:</b> Rendering offset of the group layer in pixels. Defaults to 0.</li>
+<li><i>x:</i> The x position of the group layer in pixels. (deprecated since 0.15)</li>
+<li><i>y:</i> The y position of the group layer in pixels. (deprecated since 0.15)</li>
+<li><b>opacity:</b> The opacity of the layer as a value from 0 to 1. Defaults to 1.</li>
+<li><b>visible:</b> Whether the layer is shown (1) or hidden (0). Defaults to 1.</li>
+</ul>
+<p>A group layer, used to organize the layers of the map in a hierarchy. Its attributes <code>offsetx</code>, <code>offsety</code>, <code>opacity</code> and <code>visible</code> recursively affect child layers.</p>
+<p>Can contain: <a href="#properties">properties</a>, <a href="#layer">layer</a>, <a href="#objectgroup">objectgroup</a>, <a href="#imagelayer">imagelayer</a>, <a href="#group">group</a></p>
 <h2 id="properties">&lt;properties&gt;<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
 <p>Can contain: <a href="#property">property</a></p>
-<p>Wraps any number of custom properties. Can be used as a child of the <code>map</code>, <code>tileset</code>, <code>tile</code> (when part of a <code>tileset</code>), <code>layer</code>, <code>objectgroup</code>, <code>object</code> and <code>imagelayer</code> elements.</p>
+<p>Wraps any number of custom properties. Can be used as a child of the <code>map</code>, <code>tileset</code>, <code>tile</code> (when part of a <code>tileset</code>), <code>terrain</code>, <code>layer</code>, <code>objectgroup</code>, <code>object</code>, <code>imagelayer</code> and <code>group</code> elements.</p>
 <h3 id="property">&lt;property&gt;<a class="headerlink" href="#property" title="Permanent link">&para;</a></h3>
 <ul>
 <li><b>name:</b> The name of the property.</li>
